@@ -1,4 +1,4 @@
-package component.fileupload;
+package com.start.controller;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileItemFactory;

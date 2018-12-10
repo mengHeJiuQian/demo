@@ -1,9 +1,11 @@
 package _01_regex;
 
+import com.alibaba.druid.support.json.JSONUtils;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.util.CollectionUtils;
+import springfox.documentation.spring.web.json.Json;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -38,10 +40,14 @@ public class TestRegex {
                 log.info("手机号输入有误，可输入符合规则手机号, {}。", mobiles[i]);
             }
         }
+
+
         List<String> needDistributorSubmit = Lists.newArrayList("tdiscountECANTA", "tcommunicateWechat");
         String typeSql = needDistributorSubmit.stream()
                 .map(metaNode -> "'" + metaNode + "'")
                 .collect(Collectors.joining(",", "(", ")"));
+
+
         StringBuffer sql = new StringBuffer();
         sql.append("select count(1) from campaign_entry camp, workflow_node wn ")
                 .append("where camp.workflow_id = wn.workflow_id ")
@@ -52,5 +58,25 @@ public class TestRegex {
 
         System.out.println(needDistributorSubmit.toString());
 
+
+
+        ArrayList list = new ArrayList();
+        list.add("a");
+        list.add("d");
+        list.add("c");
+        System.out.println(StringUtils.join(list,"," ));
+        System.out.println("list=" + list);
+        List nonExist = filterNonExist(list);
+        System.out.println(nonExist);
+        list.removeAll(nonExist);
+        System.out.println(list);
+        //System.out.println(JSONUtils.toJSONString(list));
+    }
+
+    public static List<String> filterNonExist(List<String> idList) {
+        idList = Lists.newArrayList(idList); // 所有的
+        List<String> exist = Lists.newArrayList("a"); //查询得到的
+        idList.removeAll(exist);
+        return idList;
     }
 }
