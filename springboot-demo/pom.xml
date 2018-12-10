@@ -24,6 +24,8 @@
         <java.version>1.8</java.version>
         <ws-api.version>2.0.1</ws-api.version>
         <fileupload.version>1.3</fileupload.version>
+        <lombok.version>1.18.4</lombok.version>
+        <guava.version>23.0</guava.version>
     </properties>
 
     <dependencies>
@@ -36,6 +38,19 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/javax.ws.rs/javax.ws.rs-api -->

@@ -1,4 +1,4 @@
-package com.start.domain;
+package com.example.domain;
 
 import lombok.Data;
 
