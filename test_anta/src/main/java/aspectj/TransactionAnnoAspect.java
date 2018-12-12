@@ -33,28 +33,36 @@ public class TransactionAnnoAspect {
         }
         System.out.println("关闭事物");*/
 
-        System.out.println("around");
+
+        System.out.println("around1");
+        try {
+            pjp.proceed(pjp.getArgs());
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+        }
+        System.out.println("around2");
+
 
     }
 
-    @Before(value = "@annotation(aspectj.TransactionAnno) && @annotation(ta)")
-    public void myBefore(ProceedingJoinPoint pjp, TransactionAnno ta) {
-        System.out.println("before");
-    }
-
-    @After(value = "@annotation(aspectj.TransactionAnno) && @annotation(ta)")
-    public void myAfter(ProceedingJoinPoint pjp, TransactionAnno ta) {
-        System.out.println("after");
-    }
-
-    @AfterReturning(value = "@annotation(aspectj.TransactionAnno) && @annotation(ta)")
-    public void myAfterReturning(ProceedingJoinPoint pjp, TransactionAnno ta) {
-        System.out.println("afterReturning");
-    }
-
-    @AfterThrowing(value = "@annotation(aspectj.TransactionAnno) && @annotation(ta)")
-    public void myAfterThrowing(ProceedingJoinPoint pjp, TransactionAnno ta) {
-        System.out.println("afterThrowing");
-    }
+//    @Before(value = "@annotation(aspectj.TransactionAnno) && @annotation(ta)")
+//    public void myBefore(ProceedingJoinPoint pjp, TransactionAnno ta) {
+//        System.out.println("before");
+//    }
+//
+//    @After(value = "@annotation(aspectj.TransactionAnno) && @annotation(ta)")
+//    public void myAfter(ProceedingJoinPoint pjp, TransactionAnno ta) {
+//        System.out.println("after");
+//    }
+//
+//    @AfterReturning(value = "@annotation(aspectj.TransactionAnno) && @annotation(ta)")
+//    public void myAfterReturning(ProceedingJoinPoint pjp, TransactionAnno ta) {
+//        System.out.println("afterReturning");
+//    }
+//
+//    @AfterThrowing(value = "@annotation(aspectj.TransactionAnno) && @annotation(ta)")
+//    public void myAfterThrowing(ProceedingJoinPoint pjp, TransactionAnno ta) {
+//        System.out.println("afterThrowing");
+//    }
 
 }

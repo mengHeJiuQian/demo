@@ -15,7 +15,7 @@
        http://www.springframework.org/schema/tx
        http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-    <context:component-scan base-package="aspectj.testredislock" />
+    <context:component-scan base-package="aspectj" />
 
     <!-- aop 注解实现
      xmlns:aop="http://www.springframework.org/schema/aop" 这个在xmlns里好像有顺序要求
