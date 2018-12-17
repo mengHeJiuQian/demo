@@ -23,10 +23,8 @@ public class UUIDUtil {
         System.out.println(uncompress);
 
         byte b1 = -5;
-        long long1 = b1;
-        long long2 = b1 & 0XFF;
-        System.out.println(long1);
-        System.out.println(long2);
+        System.out.println(Integer.toBinaryString( (((int)b1) << 8) ));
+        System.out.println(Integer.toBinaryString( (((int)b1 & 0XFF) << 8) ));
     }
 
     protected static String compressedUUID(UUID uuid) {
@@ -60,6 +58,11 @@ public class UUIDUtil {
     protected static long bytes2long(byte[] bytes, int offset) {
         long value = 0;
         for (int i = 7; i > -1; i--) {
+            /**
+             * 与0XFF进行与运算是为了让bytes[i]结果为8位
+             *
+             *
+             */
             value |= (((long) bytes[offset++]) & 0xFF) << 8 * i;
         }
         return value;
