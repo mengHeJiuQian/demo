@@ -1,7 +1,7 @@
 package com.example.controller;
 
 import com.example.config.NeoProperties;
-import com.example.domain.User;
+import com.example.domain.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,13 +22,10 @@ public class HelloWorldController {
         return "hello,xi-hong-shi-shou-fu";
     }
 
-    @RequestMapping("/getUser")
-    public User getUser() {
-        User user = new User();
-        user.setUsername("yang.liu");
-        user.setPassword("123456");
-        System.out.println(neoProperties.toString());
-        return user;
+    @RequestMapping("/getAllUser")
+    public Person getUser() {
+
+        return null;
     }
 
 }

@@ -1,3 +1,5 @@
+package com.example;
+
 import com.example.MySpringBootApplication;
 import com.example.controller.HelloWorldController;
 import org.junit.Before;
