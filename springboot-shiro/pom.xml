@@ -29,6 +29,7 @@
         <guava.version>23.0</guava.version>
 
 
+
         <!--第二部分：web应用常用配置-->
         <mybatis.version>1.3.2</mybatis.version>
         <mysql>5.1.47</mysql>
@@ -36,6 +37,7 @@
 
         <!--第三部分：常见功能配置-->
         <fileupload.version>1.3.1</fileupload.version>
+        <swagger2.version>2.9.2</swagger2.version>
 
 
     </properties>
@@ -87,6 +89,16 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql.version}</version>
             <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${swagger2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${swagger2.version}</version>
         </dependency>
 
 
