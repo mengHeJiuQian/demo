@@ -3,6 +3,8 @@ package com.example.service;
 import com.example.domain.Person;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 /**
  * @Description TODO
  * @Author yang.liu
@@ -10,7 +12,7 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface PersonService {
 
-    public Person getAll();
+    public List<Person> getAll();
     public Person getById(@Param("id") Integer id);
 
 

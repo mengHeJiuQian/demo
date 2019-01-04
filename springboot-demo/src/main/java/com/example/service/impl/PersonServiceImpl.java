@@ -1,10 +1,12 @@
 package com.example.service.impl;
 
-import com.example.dao.PersonMapper;
 import com.example.domain.Person;
+import com.example.mapper.test1.PersonMapper;
 import com.example.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @Description TODO
@@ -18,8 +20,8 @@ public class PersonServiceImpl implements PersonService {
     private PersonMapper personMapper;
 
     @Override
-    public Person getAll() {
-        return null;
+    public List<Person> getAll() {
+        return personMapper.getAll();
     }
 
     @Override
