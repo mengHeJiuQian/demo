@@ -1,6 +1,7 @@
 package core1.chapter04;
 
-import java.time.*;
+import java.time.LocalDate;
+import java.time.DayOfWeek;
 
 /**
  * @version 1.5 2015-05-08
