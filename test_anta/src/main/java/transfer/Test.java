@@ -10,7 +10,29 @@ import java.util.*;
  */
 public class Test {
 
-    public static void main(String[] args) {
+    public static String prop = "静态成员";
+
+    static {
+        System.out.println("静态代码块");
+    }
+
+    {
+        System.out.println("构造代码块");
+    }
+
+    public Test() {
+        System.out.println("构造函数");
+    }
+
+    public static void main(String[] args) throws CloneNotSupportedException {
+
+        System.out.println(1*31);
+        System.out.println((1<<5) - 1);
+
+        Test t1 = new Test();
+        Test t2 = new Test();
+        //Test t2 = (Test) t1.clone();
+
         /**
          *     00000000 00000000 00000000 00000001
          *
