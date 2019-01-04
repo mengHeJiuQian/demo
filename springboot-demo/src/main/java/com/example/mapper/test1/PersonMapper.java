@@ -1,7 +1,9 @@
-package com.example.dao;
+package com.example.mapper.test1;
 
 import com.example.domain.Person;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * @Description TODO
@@ -10,12 +12,11 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface PersonMapper {
 
-    public Person getAll();
-    public Person getById(@Param("id") Integer id);
+    List<Person> getAll();
+
+    Person getById(@Param("id") Integer id);
 
 
-    public void insert(@Param("person") Person person);
-
-
+    void insert(@Param("person") Person person);
 
 }

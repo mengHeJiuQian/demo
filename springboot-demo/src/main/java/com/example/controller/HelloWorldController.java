@@ -1,31 +1,31 @@
 package com.example.controller;
 
-import com.example.config.NeoProperties;
-import com.example.domain.Person;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.QueryParam;
 
 /**
  * @Description TODO
  * @Author yang.liu
  * @Date 2018/12/10 13:08
  */
-@RestController
+@Component
+@Path("/shop/selector")
 public class HelloWorldController {
 
-    @Autowired
-    private NeoProperties neoProperties;
 
-    @RequestMapping("/hello")
-    public String hello() {
+    @POST
+    @Path("/hello")
+    public String hello(@QueryParam("maxRecord") int maxRecord) {
+        System.out.println("maxRecord" + maxRecord);
         return "hello,xi-hong-shi-shou-fu";
     }
 
-    @RequestMapping("/getAllUser")
-    public Person getUser() {
 
-        return null;
-    }
 
 }
