@@ -21,7 +21,9 @@ import java.util.*;
 public class Chapter02 {
 
     public static void main(String[] args) throws InterruptedException {
-        new Chapter02().run();
+        System.out.println(Long.MIN_VALUE);
+        System.out.println(Long.MAX_VALUE);
+        //new Chapter02().run();
     }
 
     public void run() throws InterruptedException {

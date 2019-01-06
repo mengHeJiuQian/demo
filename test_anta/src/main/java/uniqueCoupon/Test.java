@@ -28,6 +28,7 @@ public class Test {
         paramValue = paramValue.replace("%", "\\\\%");
         String singleSelect = String.format("%s like '%%%s%%'", "product_id", paramValue);
         System.out.println(singleSelect);
+        System.out.println(System.currentTimeMillis());
     }
 
 }
