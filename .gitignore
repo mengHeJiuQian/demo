@@ -1,5 +1,31 @@
-# 忽略.idea文件夹
 .idea/
-target/
-out/
-*.iml
+
+# CoreJavaVolume1-2项目下要忽略的文件
+CoreJavaVolume1-2/out/
+CoreJavaVolume1-2/.idea/
+CoreJavaVolume1-2/CoreJavaVolume1-2.iml
+
+# redis-in-action项目下要忽略的文件
+redis-in-action/.idea/
+redis-in-action/redis-in-action.iml
+redis-in-action/target/
+
+# springboot-demo项目下要忽略的文件
+springboot-demo/.idea/
+springboot-demo/springboot-demo.iml
+springboot-demo/target/
+
+# springboot-shiro项目下要忽略的文件
+springboot-shiro/.idea/
+springboot-shiro/springboot-shiro.iml
+springboot-shiro/target/
+
+# test_anta项目下要忽略的文件
+test_anta/.idea/
+test_anta/target/
+test_anta/test_anta.iml
+
+# springboot-shiro项目下要忽略的文件
+剑指offer/.idea/
+剑指offer/out/
+剑指offer/剑指offer.iml
