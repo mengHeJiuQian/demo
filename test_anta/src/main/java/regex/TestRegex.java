@@ -1,16 +1,13 @@
-package _01_regex;
+package regex;
 
-import com.alibaba.druid.support.json.JSONUtils;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
-import org.springframework.util.CollectionUtils;
-import springfox.documentation.spring.web.json.Json;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -22,6 +19,29 @@ import java.util.stream.Collectors;
  */
 @Slf4j
 public class TestRegex {
+
+
+
+
+    /**
+     * 测试 String pStr = "\\((.*?)\\)";//获取括号"()"中的内容
+     */
+    @Test
+    public void test1() {
+        String regex = "\\((.*?)\\)";
+        Pattern p = Pattern.compile(regex);
+        Matcher m = p.matcher("CREATE TABLE `t1` (  `name` varchar(20) DEFAULT NULL,  `age` int(11) DEFAULT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8");
+
+        boolean matches = m.matches(); //尝试将整个输入序列与该模式匹配。
+        String column = null;
+        while (m.find()) {
+            column = m.group();
+            break;
+        }
+        System.out.println(column);
+
+    }
+
     public static void main(String[] args) {
         Pattern REGEX_MOBILE_NODE = Pattern.compile("^(13[0-9]|14[0-9]|15[0-9]|18[0-9]|17[0-9]){1}\\d{8}$");
         Pattern MOBILE_N = Pattern.compile("^0?1[3-9]\\d{9}$");
@@ -78,5 +98,24 @@ public class TestRegex {
         List<String> exist = Lists.newArrayList("a"); //查询得到的
         idList.removeAll(exist);
         return idList;
+    }
+
+
+    // 测试 hibernate Validator 中的 @Pattern
+    // @Pattern(regex=,flag=) 被注释的元素必须符合指定的正则表达式
+    @Test
+    public void testPattern() {
+        Pattern pattern = Pattern.compile("^NO_LIMIT|LIMIT_PRODUCT$");
+        System.out.println(pattern.matcher("NO_LIMIT").matches());
+        System.out.println(pattern.matcher("LIMIT_PRODUCT").matches());
+        System.out.println(pattern.matcher("NT").matches());
+    }
+
+    @Test
+    public void testPatternNULL() {
+        Pattern pattern = Pattern.compile("^NO_LIMIT|LIMIT_PRODUCT$");
+        System.out.println(pattern.matcher(null).matches());  // NullPointerException
+        System.out.println(pattern.matcher("LIMIT_PRODUCT").matches());
+        System.out.println(pattern.matcher("NT").matches());
     }
 }

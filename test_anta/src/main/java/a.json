@@ -1,0 +1,114 @@
+// 主订单-子订单
+{
+  "messageId":"1356491646",
+  "type":"NORMAL",
+  "data":[
+    {
+      "orderId": "10010",
+      "originalOrderId": "10010001",
+      "customerNo": "60606",
+      "shopCode": "A001",
+      "shopName": "徐家汇店",
+      "totalQuantity": 1,
+      "freight": 15,
+      "discountFee": 10,
+      "totalFee": 96,
+      "payment": 86,
+      "receiverName": "张三",
+      "receiverMobile": "13800000831",
+      "receiverTelephone": "8586489",
+      "receiverProvinceCode": "P001",
+      "receiverProvinceName": "上海",
+      "receiverCityCode": "C001",
+      "receiverCityName": "上海",
+      "receiverDistrictCode": "D001",
+      "receiverDistrictName": "上海",
+      "receiverAddress": "上海市徐家汇",
+      "receiverZipCode": "000000",
+      "couponNo": "456789123124A",
+      "couponFee": 10,
+      "status": "CREATED",
+      "orderType": "NORMAL",
+      //"isSend":"Y",
+      "channelType": "TAOBAO",
+      "description": "早点发货，坐等收货",
+      "orderTime": "2019-04-13 09:55:51",
+      "payTime": "2019-04-14 09:55:51",
+      "shippingTime": "2019-04-15 09:55:51",
+      "receiveTime": "2019-04-16 09:55:51",
+      "finishTime": "2019-04-17 09:55:51",
+      "items": [
+        {
+          "orderItemId": "20020",
+          "originalItemId": "20020002",
+          "memberId": "60606",
+          "orderId": "10010",
+          "productCode": "p001",
+          "productName": "平板鞋",
+          "sqId": "123",
+          "price": 299,
+          "discountFee": 50,
+          "totalFee": 249,
+          "payment": 249,
+          "quantity": 1,
+          "channelType": "TAOBAO",
+          "status": "CREATED"
+        }
+      ]
+    }
+  ]
+}
+
+
+// 商品
+{
+  "id":"1111wewew23aaa2bewe",
+  "type":"PRODUCT",
+  "data":
+  [
+    {
+      "productCode": "p001",
+      "sqId": "123",
+      "productName": "平板鞋",
+      "retailPrice": "299",
+      "deptCode": "adult",
+      "deptName": "成人",
+      "familyCode": "young",
+      "familyName": "青少年版",
+      "subFamilyCode": "child",
+      "subFamilyname": "儿童版",
+      "onSaledate": "2019-04-13 09:55:51",
+      "isValid": "Y",
+      "channelType": "TAOBAO"
+    }
+  ]
+}
+
+
+
+
+// 店铺
+{
+  "id":"1111wewew23aaa2bewe",
+  "type":"SHOP",
+  "data":
+  [
+    {
+      "shopCode":"A001",
+      "shopName":"徐家汇店",
+      "provinceCode":"P001",
+      "provinceName":"上海",
+      "cityCode":"C001",
+      "cityName":"上海",
+      "districtCode":"D001",
+      "districtName":"上海",
+      "address":"上海市徐家汇",
+      "openTime":"2019-04-13 09:55:51",
+      "closeTime":"2019-04-14 09:55:51",
+      "isValid":"Y",
+      "channelType":"TAOBAO",
+      "shopTypeCode":"NAPA",
+      "shopTypeName":"加盟店"
+    }
+  ]
+}

@@ -29,6 +29,11 @@ public class Test {
         String singleSelect = String.format("%s like '%%%s%%'", "product_id", paramValue);
         System.out.println(singleSelect);
         System.out.println(System.currentTimeMillis());
+
+        Long a = 12345256L;
+        System.out.println(String.valueOf(a.toString()));
+
+
     }
 
 }
