@@ -1,5 +1,9 @@
 package _enum;
 
+import lombok.extern.slf4j.Slf4j;
+
+import java.util.List;
+
 /**
  * @Description TODO
  * @Author yang.liu
@@ -23,10 +27,17 @@ enum E {
 
 }
 
+@Slf4j
 public class TestEnum {
 
     public static void main(String[] args) {
-        System.out.println(E.GRANT_ONLINE.equals("GRANT_ONLINE"));
+        String projectId = "10000";
+        projectId += projectId.substring(projectId.length()-1);
+        System.out.println(projectId);
+        System.out.println(Long.valueOf(100000));
+
+        int i = 1;
+        log.info("开启柔性事物：{}", i == 1 ? true : false);
     }
 
 }

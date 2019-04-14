@@ -1,7 +1,13 @@
 package _08_map;
 
-import java.util.HashMap;
+import com.google.common.collect.Lists;
+import org.apache.commons.lang.StringUtils;
+import org.junit.jupiter.api.Test;
+import org.springframework.util.CollectionUtils;
+
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Collectors;
 
 /**
  * @Description TODO
@@ -10,18 +16,113 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class MapTest {
 
-    public static final int TEST_NUM = 1_000_000; // 测试量
+    public static void testParams(Object... params) {
+        System.out.println(params.length);
+    }
 
     public static void main(String[] args) {
-//        HashMapTest();
-        // testContainsKey();
-//        testConcurrentHashMap();
-        System.out.println(0x7fffffff);
-        System.out.println(1 << 30);
+        List list = new ArrayList();
+        list.add("11");
+        list.add("22");
+        testParams(list.toArray());
+    }
 
-        testCHashMap_tableSizeFor();
+    /**
+     [
+     {
+     "store_no":"3434",
+     "store_name":"嘉定斯凯奇店",
+     "store_type_name":"店铺类型名称1",
+     "store_source":"店铺渠道1",
+     "status":"1",
+     "shopId":"3434",
+     "shopName":"嘉定斯凯奇店"
+     },
+     {
+     "store_no":"XAA7关店",
+     "store_name":"西安宝鸡天下汇关店",
+     "store_type_name":"123",
+     "store_source":"123",
+     "status":"1",
+     "shopId":"XAA7关店",
+     "shopName":"西安宝鸡天下汇关店"
+     }
+     ]
+     */
+    @Test
+    public void testMapInList() {
+        Map m1 = new HashMap();
+        m1.put("store_no", "3434");
+        m1.put("store_name", "嘉定斯凯奇店");
+        m1.put("store_type_name", "店铺类型名称1");
+        m1.put("store_source", "店铺渠道1");
+        m1.put("status", "1");
+        m1.put("shopId", "3434");
+        m1.put("shopName", "嘉定斯凯奇店");
+
+        Map m2 = new HashMap();
+        m2.put("store_no", "XAA7关店");
+        m2.put("store_name", "西安宝鸡天下汇关店");
+        m2.put("store_type_name", "123");
+        m2.put("store_source", "123");
+        m2.put("status", "1");
+        m2.put("shopId", "XAA7关店");
+        m2.put("shopName", "西安宝鸡天下汇关店");
+
+        List<Map> resultList = new ArrayList();
+        resultList.add(m1);
+        resultList.add(m2);
+        String rulesId = "123123";
+
+        if (!CollectionUtils.isEmpty(resultList)) {
+            //获得所有列名
+            List<String> columnName = new ArrayList(resultList.get(0).keySet());
+
+            //列名的SQL，如store_no,store_name,store_type_name
+            String columnSql = StringUtils.join(columnName, ",");
+            // 加上id,和rules_id两个参数
+            String valueSql = generatePrepareStatementValueSql(columnName.size() + 2, resultList.size());
+
+            List<String> params = new ArrayList<>();
+            resultList.stream().forEach(map -> {
+                params.add(UUID.randomUUID().toString());
+                params.add(rulesId);
+                columnName.stream().forEach(col -> params.add((String) map.get(col)));
+            });
+            System.out.println(columnName.toString());
+            System.out.println(params.toString());
+            String sql = "insert into shop_selector_result(id,rules_id," + columnSql + ") " + valueSql;
+            System.out.println(sql);
+        }
 
     }
+
+    private  static  String generatePrepareStatementValueSql(int paramNum, int records) {
+        StringBuilder prepareStatementValueSql = new StringBuilder(" values ");
+        for (int i = 0; i < records; i++) {
+            StringBuilder recordSql = new StringBuilder("(");
+            for (int j = 1; j <= paramNum; j++) {
+                recordSql.append("?,");
+            }
+            recordSql = recordSql.deleteCharAt(recordSql.length() - 1);
+            recordSql.append("),");
+            prepareStatementValueSql.append(recordSql);
+        }
+        return prepareStatementValueSql.deleteCharAt(prepareStatementValueSql.length() - 1).toString();
+    }
+
+    public static final int TEST_NUM = 1_000_000; // 测试量
+
+//    public static void main(String[] args) {
+////        HashMapTest();
+//        // testContainsKey();
+////        testConcurrentHashMap();
+//        System.out.println(0x7fffffff);
+//        System.out.println(1 << 30);
+//
+//        testCHashMap_tableSizeFor();
+//
+//    }
 
     public static void testCHashMap_tableSizeFor() {
         int initialCapacity = 10;

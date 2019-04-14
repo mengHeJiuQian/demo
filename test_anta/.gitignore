@@ -1,6 +1,6 @@
 ## directories ##
-.idea/
-/target
+/.idea/
+/target/
 
 ## files ##
 *.iml

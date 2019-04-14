@@ -21,7 +21,12 @@ import java.util.stream.Collectors;
 public class TestRegex {
 
 
+    @Test
+    public void regex() {
+        System.out.println("%".replaceAll("%", "\\\\%"));
 
+        System.out.println("\\");
+    }
 
     /**
      * 测试 String pStr = "\\((.*?)\\)";//获取括号"()"中的内容
