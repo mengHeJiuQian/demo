@@ -123,4 +123,12 @@ public class TestRegex {
         System.out.println(pattern.matcher("LIMIT_PRODUCT").matches());
         System.out.println(pattern.matcher("NT").matches());
     }
+
+    @Test
+    public void testReplact() {
+        String rulesSql = " select store_no,store_name,store_type_name,store_source,status  from plt_skx_store  where 1=1  and store_no in (\"NDLF\",\"SG15\") ";
+        log.info("规则sql:{}.", rulesSql);
+        String afterReplace = rulesSql.replaceAll("select.*from", " select * from ");
+        log.info("规则afterReplace:{}.", afterReplace);
+    }
 }
