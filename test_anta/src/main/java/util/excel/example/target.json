@@ -1,0 +1,22 @@
+{
+  "fqn":"data.prctvmkt.jd.ShopCustomer",
+  "owner":"admin",
+  "type":"Object",
+  "description":"淘宝店铺客户映射关系",
+  "fields":[
+    {
+      "name":"dpId",
+      "fieldType":{
+        "fqn":"system.lang.String"
+      },
+      "description":"店铺ID"
+    },
+    {
+      "name":"buyerNick",
+      "fieldType":{
+        "fqn":"system.lang.String"
+      },
+      "description":"卖家账号"
+    }
+  ]
+}

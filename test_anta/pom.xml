@@ -22,9 +22,13 @@
         <springfox-version>2.6.1</springfox-version>
         <epassport.version>1.0.0-RELEASE</epassport.version>
         <sdk-epassport.version>1.1.0-SNAPSHOT</sdk-epassport.version>
-        <poi.version>4.0.0</poi.version>
+
+        <poi.version>4.1.0</poi.version>
         <kafka.version>2.1.0</kafka.version>
+        <xlsx-streamer.version>2.1.0</xlsx-streamer.version>
+
         <mainClass>com.shuyun.ccms.ms.benefit.Application</mainClass>
+
     </properties>
 
     <dependencyManagement>
@@ -41,6 +45,32 @@
 
 
     <dependencies>
+
+        <!-- commons-io相关 -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.6</version>
+        </dependency>
+
+
+        <!-- POI相关 -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>${poi.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>${poi.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml-schemas</artifactId>
+            <version>${poi.version}</version>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/org.apache.kafka/kafka-clients -->
         <dependency>
             <groupId>org.apache.kafka</groupId>
@@ -57,6 +87,12 @@
             <groupId>net.sf.supercsv</groupId>
             <artifactId>super-csv</artifactId>
             <version>2.1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.monitorjbl</groupId>
+            <artifactId>xlsx-streamer</artifactId>
+            <version>${xlsx-streamer.version}</version>
         </dependency>
 
         <!-- spring boot 相关jar -->
