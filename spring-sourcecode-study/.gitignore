@@ -1,0 +1,26 @@
+# intellij idea
+.idea
+*.iml
+HELP.md
+
+# eclipse
+.settings/
+.project
+
+# java
+target/
+
+# maven
+.mvn/
+mvnw
+mvnw.cmd
+
+# osx
+.DS_Store/
+
+# vscode
+.history/
+
+# other
+log/
+
