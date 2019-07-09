@@ -1,4 +1,4 @@
-package _05_thread.longadder;
+package thread.longadder;
 
 import java.util.concurrent.atomic.LongAdder;
 
