@@ -3,7 +3,11 @@ package org.kafka.springboot.producer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.kafka.clients.producer.ProducerRecord;
 import org.kafka.springboot.beans.Message;
+import org.kafka.springboot.config.KafkaConfig;
+import org.kafka.springboot.dto.NameTaskDto;
+import org.kafka.springboot.util.JsonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
@@ -33,5 +37,10 @@ public class KafkaSender {
         message.setSendTime(new Date());
         log.info("+++++++++++++++++++++  message = {}", gson.toJson(message));
         kafkaTemplate.send("zhisheng", gson.toJson(message));
+    }
+
+    public void splitNameTask(NameTaskDto taskDto) {
+        ProducerRecord<String, String> record = new ProducerRecord<>(KafkaConfig.GROUP_ID_SPLIT_PRINT_NAME_TASK, JsonUtil.toJson(taskDto));
+        kafkaTemplate.send(record);
     }
 }
