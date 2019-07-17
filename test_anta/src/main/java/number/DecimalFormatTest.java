@@ -1,4 +1,4 @@
-package _04_number;
+package number;
 
 import java.text.DecimalFormat;
 
