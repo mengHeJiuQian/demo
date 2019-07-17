@@ -13,7 +13,7 @@ public class ReentrantLockTest {
         ReentrantLock lock = new ReentrantLock();
 
         lock.lock();
-        System.out.println("printf");
+        System.out.println("### printf");
         lock.unlock();
 
     }
