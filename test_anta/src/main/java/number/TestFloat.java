@@ -11,6 +11,17 @@ import org.junit.jupiter.api.Test;
  */
 public class TestFloat {
 
+    /**
+     * 测试NaN（Not a Number）和NaN不是相等的
+     * 参考https://codeday.me/bug/20181108/359851.html
+     */
+    @Test
+    public void testIsNaNMethod() {
+        System.out.println(Float.isNaN(0.0f / 0.0f));
+        System.out.println(Double.isNaN(Math.sqrt(-1)));
+        System.out.println(Double.isNaN(Math.sqrt(-2)));
+    }
+
     // 测试float类型存储浮点数
     @Test
     public static void testFloat() {
