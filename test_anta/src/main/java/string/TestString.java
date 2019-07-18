@@ -1,11 +1,9 @@
-package _10_string;
+package string;
 
-import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.lang.StringUtils;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.Base64;
 import java.util.List;
 
 /**
@@ -129,20 +127,5 @@ public class TestString {
         System.out.println("success");
     }
 
-    @Test
-    public void decode() {
-
-        /*//解析租户
-        try {
-            String payload = authorization.split("\\.")[1];
-            String json = new String(Base64.getUrlDecoder().decode(payload));
-
-            JSONObject jsonObject= JSONObject.parseObject(json);
-            return (String)jsonObject.get(filed);
-        }catch (Exception e) {
-            LOGGER.info("authorization:{}不存在{}字段",filed);
-        }
-        return null;*/
-    }
 
 }

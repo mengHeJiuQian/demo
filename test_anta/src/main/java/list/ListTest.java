@@ -1,6 +1,5 @@
-package _07_list;
+package list;
 
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -12,7 +11,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
  */
 public class ListTest {
 
-    public static final int TEST_NUM = 1000_000; // 测试量
+    public static final int TEST_NUM = 100_000; // 测试量
 
     public static void main(String[] args) {
         ArrayList a = new ArrayList(10);
@@ -22,8 +21,8 @@ public class ListTest {
         System.out.println(a.size());
         System.out.println();
 
-        // ArrayListTest();
-        // CopyOnWriteArrayListTest();
+         ArrayListTest();
+         CopyOnWriteArrayListTest();
         LinkedListTest();
     }
 
@@ -44,7 +43,7 @@ public class ListTest {
             copy.add(i + 1);
         }
         long t2 = System.currentTimeMillis();
-        System.out.println("CopyOnWriteArrayList-测试数据量：" + TEST_NUM + "，用时：" + (t2 - t1) / 1000 + "秒");
+        System.out.println("CopyOnWriteArrayList-测试数据量：" + TEST_NUM + "，用时：" + (t2 - t1) + "毫秒");
     }
 
     public static void LinkedListTest() {

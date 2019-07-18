@@ -1,3 +1,5 @@
+package string;
+
 import org.junit.jupiter.api.Test;
 
 /**
