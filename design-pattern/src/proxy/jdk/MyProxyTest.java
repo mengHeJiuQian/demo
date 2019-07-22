@@ -20,7 +20,7 @@ import java.lang.reflect.Proxy;
 public class MyProxyTest {
 
     public static void main(String[] args) throws Exception {
-
+        System.getProperties().put("sun.misc.ProxyGenerator.saveGeneratedFiles", "true");
         // 第二步
         Class<?> proxyClass = Proxy.getProxyClass(IHello.class.getClassLoader(), IHello.class);
         // 第三步
