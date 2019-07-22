@@ -9,7 +9,7 @@ package array.max_sub_sequence;
 public class MaxSubSequenceSample {
 
     public static void main(String[] args) {
-        var arr = new int[]{-1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -9, 20, -6, 5};
+        int[] arr = new int[]{-1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -9, 20, -6, 5};
         int i = maxSubSequence(arr);
         System.out.println(i);
 
