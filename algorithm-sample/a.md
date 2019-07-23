@@ -2,10 +2,10 @@
 ## 1、数组相关问题
 
 ### 1.1、求最大子序列问题？
-array.max_sub_sequence.MaxSubSequenceSample
+array.MaxSubSequenceSample
 
 ### 1.2、编写一个算法，若矩阵M*N中某个元素为0，则将其所在行与列清0。
-
+array.RowAndColumnSetToZero
 
 ## 2、字符串相关问题
 
@@ -20,6 +20,7 @@ string.CompressedString
 ## 3、五子棋胜负情况
 > 请编写程序，能够判断M*N棋盘上当前五子棋的胜负情况。
 
+array.GobangGameWinOrNot
 
 
 

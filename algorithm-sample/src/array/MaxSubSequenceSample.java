@@ -1,4 +1,4 @@
-package array.max_sub_sequence;
+package array;
 
 /**
  * 创建人：yang.liu
