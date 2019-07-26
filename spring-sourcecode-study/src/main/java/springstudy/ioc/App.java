@@ -13,7 +13,7 @@ public class App {
 
     public static void main(String[] args) {
         // 用我们的配置文件来启动一个 ApplicationContext
-        ApplicationContext context = new ClassPathXmlApplicationContext("classpath:ioc/application.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("classpath:/ioc/application.xml");
 
         System.out.println("context 启动成功");
 
