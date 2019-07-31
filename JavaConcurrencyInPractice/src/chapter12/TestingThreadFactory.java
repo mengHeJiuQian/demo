@@ -1,8 +1,5 @@
 package chapter12;
 
-import org.junit.jupiter.api.Test;
-
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.atomic.AtomicInteger;
