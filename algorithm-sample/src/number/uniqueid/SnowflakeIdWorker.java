@@ -13,7 +13,7 @@ public class SnowflakeIdWorker {
     /**
      * 开始时间截 (2019-02-01)
      */
-    private final long twepoch = 1548950400000L;
+    private final long twepoch = 1564619057305L;
 
     /**
      * 机器id所占的位数
