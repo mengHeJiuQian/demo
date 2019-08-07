@@ -1,4 +1,4 @@
-package _06_uuid;
+package uuid;
 
 import org.apache.commons.codec.binary.Base64;
 

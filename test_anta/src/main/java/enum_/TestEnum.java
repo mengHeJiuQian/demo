@@ -1,8 +1,6 @@
-package _enum;
+package enum_;
 
 import lombok.extern.slf4j.Slf4j;
-
-import java.util.List;
 
 /**
  * @Description TODO

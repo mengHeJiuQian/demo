@@ -1,8 +1,6 @@
-package _06_uuid;
+package uuid;
 
-import java.util.Base64;
 import java.util.UUID;
-import java.util.stream.Stream;
 
 /**
  * describe: 尝试将uuid压缩

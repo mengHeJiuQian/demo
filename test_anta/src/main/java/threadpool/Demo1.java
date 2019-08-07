@@ -1,4 +1,4 @@
-package _03_threadpool;
+package threadpool;
 
 import java.util.concurrent.*;
 

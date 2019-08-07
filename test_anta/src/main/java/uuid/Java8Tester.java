@@ -1,8 +1,5 @@
-package _06_uuid;
+package uuid;
 
-import java.io.UnsupportedEncodingException;
-import java.util.Arrays;
-import java.util.Base64;
 import java.util.UUID;
 
 /**

@@ -1,4 +1,4 @@
-package _10_static.staticInitialization;
+package static_.staticInitialization;
 
 /**
  * describe:
