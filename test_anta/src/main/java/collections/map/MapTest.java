@@ -1,4 +1,4 @@
-package map;
+package collections.map;
 
 import java.time.Duration;
 import java.time.Instant;

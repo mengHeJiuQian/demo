@@ -1,4 +1,4 @@
-package map;
+package collections.map;
 
 import org.apache.commons.lang.StringUtils;
 import org.junit.jupiter.api.Test;
