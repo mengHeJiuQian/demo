@@ -18,7 +18,7 @@ public class TestFuture {
         ExecutorService executor = Executors.newCachedThreadPool();
         List<Future<Integer>> pointTaskFutureList = new ArrayList<>(taskNum);
         for (int i = 0; i < taskNum; i++) {
-            // 提交任务，并将计算结果放到list中。
+            // 提交任务，任务的执行由线程池去调用执行并管理。这里获取结果任务的Future，并放到list中，供所有任务提交完后，判断每个任务执行的状态和结果。
             Future<Integer> future = executor.submit(new PointTask(i + 1));
             pointTaskFutureList.add(future);
         }
