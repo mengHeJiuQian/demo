@@ -13,6 +13,8 @@ import java.util.stream.Collectors;
 public class Test {
 
     public static void main(String[] args) {
+        System.out.println(System.currentTimeMillis()); //时间戳是十三位数
+
         long zero = 0L;
         for (int i = 0; i < 1500; i++) {
             System.out.println((long) (Math.random() * 30 + 1));
