@@ -10,10 +10,21 @@ import org.junit.jupiter.api.Test;
  */
 public class StringTest {
 
+    public static void main(String[] args) {
+        printStr("yangliu");
+    }
+
+    public static void printStr(Object str) {
+        System.out.println(str.toString());
+    }
+
     @Test
     public void testStringEqualsInteger() {
         Integer i = 10;
         String s = "10";
         System.out.println(s.equals(i.toString()));
     }
+
+
+
 }
