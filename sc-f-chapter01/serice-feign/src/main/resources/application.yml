@@ -7,3 +7,9 @@ server:
 spring:
   application:
     name: service-feign
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

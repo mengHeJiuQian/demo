@@ -13,3 +13,8 @@ server:
 spring:
   application:
     name: eurka-server
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
