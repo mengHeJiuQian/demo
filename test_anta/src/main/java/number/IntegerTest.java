@@ -20,4 +20,15 @@ public class IntegerTest {
         Integer i4 = 128;
         System.out.println(i3 == i4);
     }
+
+    @Test
+    public void testAbsolutonValue() {
+        int i = -10;
+        i = -i;
+        System.out.println(-i);
+        System.out.printf("%010d", i);
+        System.out.println("\n" + System.currentTimeMillis());
+        System.out.println(String.valueOf(System.currentTimeMillis()).substring(9));
+    }
+
 }
