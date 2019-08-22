@@ -31,4 +31,5 @@ public class IntegerTest {
         System.out.println(String.valueOf(System.currentTimeMillis()).substring(9));
     }
 
+
 }
