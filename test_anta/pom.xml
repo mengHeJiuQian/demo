@@ -30,6 +30,8 @@
         <kafka.version>2.1.0</kafka.version>
         <xlsx-streamer.version>2.1.0</xlsx-streamer.version>
 
+        <fastjson.version>1.2.45</fastjson.version>
+
         <mainClass>com.shuyun.ccms.ms.benefit.Application</mainClass>
 
     </properties>
@@ -48,6 +50,12 @@
 
 
     <dependencies>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
+        </dependency>
 
         <!-- commons-io相关 -->
         <dependency>

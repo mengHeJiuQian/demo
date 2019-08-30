@@ -1,5 +1,10 @@
 package collections.map;
 
+import collections.map.A.Coupon;
+import com.alibaba.fastjson.JSON;
+import com.google.common.collect.Lists;
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.commons.lang.StringUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.util.CollectionUtils;
@@ -12,32 +17,31 @@ import java.util.concurrent.ConcurrentHashMap;
  * @Author yang.liu
  * @Date 2018/12/25 20:29
  */
+@Getter
+@Setter
+class Res<T> {
+    Collection<T> data;
+}
 public class HashMapTest {
 
     public static final int TEST_NUM = 1_000_000; // 测试量
 
     public static void main(String[] args) {
-//        hashMapTest();
-//        testConcurrentHashMap();
 
-//        // testContainsKey();
-//        System.out.println(0x7fffffff);
-//        System.out.println(1 << 30);
-//
-//        testCHashMap_tableSizeFor();
+        if (true) {
+            System.out.println("true1");
+        } else if (true) {
+            System.out.println("true2");
+        }
 
+        ArrayList list = Lists.newArrayList("aaa", "bbb");
+
+        Res r = new Res();
+        r.data = list;
         HashMap map = new HashMap();
-        map.put("a", 1);
-        map.put("b", 2);
-        map.put("b", 3);
-        map.put("b", 4);
-        map.put("b", 1);
-        map.put("b", 1);
-        map.put("b", 1);
-        map.put("b", 1);
-        map.put("b", 1);
-        map.put("b", 1);
-        map.put("b", 1);
+        map.put("userInfos", r.getData());
+
+        System.out.println(JSON.toJSONString(map));
 
     }
 
