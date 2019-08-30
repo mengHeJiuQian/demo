@@ -1,10 +1,13 @@
 package com.example.controller;
 
+import com.example.task.ScheduleJob;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.QueryParam;
@@ -15,14 +18,17 @@ import javax.ws.rs.QueryParam;
  * @Date 2018/12/10 13:08
  */
 @Component
-@Path("/shop/selector")
+@RestController
 public class HelloWorldController {
 
+    @Autowired
+    private ScheduleJob job;
 
-    @POST
-    @Path("/hello")
-    public String hello(@QueryParam("maxRecord") int maxRecord) {
+    @GetMapping("/hello")
+    public String hello(int maxRecord) {
         System.out.println("maxRecord" + maxRecord);
+        //job.init();
+        job.destroy();
         return "hello,xi-hong-shi-shou-fu";
     }
 
