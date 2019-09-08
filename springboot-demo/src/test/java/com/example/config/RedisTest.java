@@ -1,6 +1,5 @@
 package com.example.config;
 
-import com.example.domain.Person;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -37,18 +36,18 @@ public class RedisTest {
 
     @Test
     public void testObj() throws Exception {
-        Person user=new Person("yang.liu@shuyun.com", "qweQWE123!");
-        ValueOperations<String, Person> operations=redisTemplate.opsForValue();
-        operations.set("com.neox", user);
-        operations.set("com.neo.f", user,10, TimeUnit.SECONDS);
-        Thread.sleep(1000);
-        //redisTemplate.delete("com.neo.f");
-        boolean exists=redisTemplate.hasKey("com.neo.f");
-        if(exists){
-            System.out.println("exists is true");
-        }else{
-            System.out.println("exists is false");
-        }
+//        Person user=new Person("yang.liu@shuyun.com", "qweQWE123!");
+//        ValueOperations<String, Person> operations=redisTemplate.opsForValue();
+//        operations.set("com.neox", user);
+//        operations.set("com.neo.f", user,10, TimeUnit.SECONDS);
+//        Thread.sleep(1000);
+//        //redisTemplate.delete("com.neo.f");
+//        boolean exists=redisTemplate.hasKey("com.neo.f");
+//        if(exists){
+//            System.out.println("exists is true");
+//        }else{
+//            System.out.println("exists is false");
+//        }
         // Assert.assertEquals("aa", operations.get("com.neo.f").getUserName());
     }
 }
