@@ -1,10 +1,12 @@
 package string;
 
+import com.google.common.collect.Lists;
 import org.apache.commons.lang.StringUtils;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @Description TODO
@@ -12,6 +14,17 @@ import java.util.List;
  * @Date 2018/11/13 14:14
  */
 public class TestString {
+
+    @Test
+    public void testEmoji() {
+        String emoji = "%E2%98%A3%EF%B8%8E%E2%98%A2%EF%B8%8E%E2%9C%8C%F0%9F%87%A6%F0%9F%87%B1%F0%9F%87%A9%F0%9F%87%BF%F0%9F%87%A9%F0%9F%87%BF%F0%9F%87%A9%F0%9F%87%BF%F0%9F%87%A9%F0%9F%87%BF";
+        System.out.println();
+        System.out.println(emoji.getBytes().length);
+        List<String> list = Lists.newArrayList("a","b","c");
+        Object[] a = list.stream().filter(s -> s.equals("a")).toArray();
+        System.out.println(a);
+
+    }
 
     private  static  String generatePrepareStatementValueSql(int paramNum) {
         StringBuilder prepareStatementValueSql = new StringBuilder("(");

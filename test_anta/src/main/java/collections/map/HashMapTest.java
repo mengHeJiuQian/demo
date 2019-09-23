@@ -1,6 +1,5 @@
 package collections.map;
 
-import collections.map.A.Coupon;
 import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Lists;
 import lombok.Getter;
@@ -188,6 +187,14 @@ public class HashMapTest {
             prepareStatementValueSql.append(recordSql);
         }
         return prepareStatementValueSql.deleteCharAt(prepareStatementValueSql.length() - 1).toString();
+    }
+
+    @Test
+    public void filterRepetition() {
+        HashMap map = new HashMap();
+        map.putIfAbsent("aaa", 1);
+        map.putIfAbsent("aaa", 2);
+        System.out.println(JSON.toJSONString(map));
     }
 
 }
