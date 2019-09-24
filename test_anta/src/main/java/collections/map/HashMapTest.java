@@ -194,7 +194,6 @@ public class HashMapTest {
         HashMap map = new HashMap();
         map.putIfAbsent("aaa", 1);
         map.putIfAbsent("aaa", 2);
-        System.out.println(JSON.toJSONString(map));
     }
 
 }
