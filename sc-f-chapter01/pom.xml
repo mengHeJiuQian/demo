@@ -24,6 +24,7 @@
         <module>service-hi</module>
         <module>serice-feign</module>
         <module>service-zuul</module>
+        <module>service-turbine</module>
     </modules>
 
     <properties>
