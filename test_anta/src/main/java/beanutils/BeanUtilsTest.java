@@ -1,5 +1,6 @@
 package beanutils;
 
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.BeanUtils;
 
 /**
@@ -15,6 +16,20 @@ public class BeanUtilsTest {
         BeanUtils.copyProperties(s1, s2);
         System.out.println(s1);
         System.out.println(s2);
+    }
+
+    /**
+     * 对象属性不相同在属性复制时不会报错
+     */
+    @Test
+    public void test1() {
+        Student s1 = new Student("yangliu", "123456");
+        Teacher t1 = null;
+
+        // org.apache.commons.beanutils.BeanUtils.copyProperties(s1, t1);
+
+        System.out.println(s1);
+        System.out.println(t1);
     }
 
 }
