@@ -6,14 +6,14 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import org.junit.jupiter.api.Test;
 import org.redisson.misc.Hash;
+import org.springframework.util.CollectionUtils;
 
+import java.io.*;
 import java.time.Duration;
 import java.time.Instant;
 import java.time.temporal.TemporalUnit;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @Description
@@ -21,6 +21,53 @@ import java.util.Map;
  * @Date 2019/4/28 15:43
  */
 public class JsonTest {
+
+    @Test
+    public void testBatchInsert10000() {
+        int testNum = 10_000;
+        List list = new ArrayList(testNum);
+        String key = "code";
+        for (int i = 0; i < testNum; i++) {
+            String code = UUID.randomUUID().toString().replace("-", "").substring(7);
+            Map<String, String> map = new HashMap<>(1);
+            map.put(key, "sheldon" + code);
+            list.add(map);
+        }
+        Map map = new HashMap(1);
+        map.put("couponCodeList", list);
+
+        System.out.println(JSONObject.toJSONString(map));
+
+    }
+
+    @Test
+    public void testRemoveMultiply() throws IOException {
+        FileInputStream fis = new FileInputStream(new File("E:\\myProject\\yangliu\\demo\\test_anta\\src\\main\\java\\json\\json.json"));
+
+        BufferedReader in = new BufferedReader(new InputStreamReader(fis));
+        String json = in.readLine();
+
+
+        in.close();
+        fis.close();
+        Map mapObject = JSONObject.parseObject(json, HashMap.class);
+
+        List<Map<String, String>> couponCodeList = (List<Map<String, String>>) mapObject.get("couponCodeList");
+
+        Set<String> uniqueCodeList = couponCodeList.stream()
+                .map(map -> map.values())
+                .flatMap(Collection::stream)
+                .map(s -> {
+                    //s = "'" + s + "'";
+                    return s;
+                })
+                .collect(Collectors.toSet());
+        List<String> collect = uniqueCodeList.stream().sorted().collect(Collectors.toList());
+
+        for (int i = 0; i < collect.size(); i++) {
+            System.out.println(collect.get(i));
+        }
+    }
 
     @Test
     public void testStringJson() {
