@@ -24,7 +24,7 @@ import java.util.concurrent.TimeUnit;
 public class RedisLockAspect {
 
     //@Autowired
-    //private RedissonClient redissonClient;
+    private RedissonClient redissonClient;
 
     @Around(value="@annotation(aspectj.testredislock.RedisLocked) && @annotation(locked)")
     public Object around(ProceedingJoinPoint joinPoint,RedisLocked locked) throws Throwable {
