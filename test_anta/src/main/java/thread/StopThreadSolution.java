@@ -11,7 +11,7 @@ public class StopThreadSolution {
         Thread t2 = new Thread(new Task(t1));
         t2.setName("t2");
         Thread t3 = new Thread(new Task(t2));
-        t3.setName("t3");
+        t3.setName("t3") ;
 
         t1.start();
         Thread.sleep(500);
