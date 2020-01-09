@@ -67,6 +67,10 @@ public class JsonTest {
         System.out.println(collect.size());
     }
 
+    /**
+     * output:
+     *     -"12312 1 123"-
+     */
     @Test
     public void testStringJson() {
         String str = "12312 1 123";
