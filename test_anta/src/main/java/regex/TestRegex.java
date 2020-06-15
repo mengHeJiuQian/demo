@@ -4,7 +4,8 @@ import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.junit.jupiter.api.Test;
-
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -130,5 +131,21 @@ public class TestRegex {
         log.info("规则sql:{}.", rulesSql);
         String afterReplace = rulesSql.replaceAll("select.*from", " select * from ");
         log.info("规则afterReplace:{}.", afterReplace);
+    }
+
+    /**
+     * 解码带有表情的字符串
+     * @throws UnsupportedEncodingException
+     */
+    @Test
+    public void testReplaceEmoji() throws UnsupportedEncodingException {
+        String rulesSql = "%E5%8F%91%E5%88%B88%E2%9C%8C";
+        //log.info("sql解码后：{}", URLDecoder.decode(rulesSql, "utf-8"));
+        log.info("规则sql:{}", rulesSql);
+        String afterReplace = rulesSql.replaceAll("%(?![0-9a-fA-F]{2})", "%25");
+        log.info("规则afterReplace:{}", afterReplace);
+        log.info("sql解码后：{}", URLDecoder.decode(rulesSql, "utf-8"));
+        String decode = URLDecoder.decode("%2B%25", "UTF-8");
+        log.info(decode);
     }
 }

@@ -1,27 +1,25 @@
 package beanutils;
 
+import lombok.Data;
+
 /**
  * @Description TODO
  * @Author yang.liu
  * @Date 2019/4/9 18:50
  */
+@Data
 public class Teacher {
 
     private String name;
+
     private String password;
-
-    public Teacher() { }
-
-    public Teacher(String name, String password) {
-        this.name = name;
-        this.password = password;
-    }
 
     @Override
     public String toString() {
-        return "Student{" +
+        return "Teacher{" +
                 "name='" + name + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }
+
 }
