@@ -25,6 +25,11 @@ public class StringTest {
         System.out.println(s.equals(i.toString()));
     }
 
-
+    @Test
+    public void testStringFormat() {
+        Integer idCardTypeId = 3;
+        String idCardTypeIdString = String.format("%s%s", 0, idCardTypeId);
+        System.out.println(idCardTypeIdString);
+    }
 
 }

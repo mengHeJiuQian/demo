@@ -1,8 +1,4 @@
-|storeCode|店铺code|||
-|tmpClassificationId|发送模板消息类型。10：优惠券发放。Integer|||
-|title|优惠券标题。String。必填。|||
-|sendTime|模板消息发送时间。String。必填。|||
-|channel|渠道 ：线上、线下|||
-|brandName|优惠券品牌名称。String。必填。|||
-|scene|要发放的优惠券主键ID,英文逗号分隔， 后面跟着|||
-|userInfos|用户unionId列表，String。必填。|||
+{
+  "code": 0,
+  "message": "新增服务预约成功"
+}
