@@ -1,4 +1,4 @@
-package headfirst.stragegy;
+package headfirst.stragegy.duck.quack;
 
 /**
  * @author: sheldon

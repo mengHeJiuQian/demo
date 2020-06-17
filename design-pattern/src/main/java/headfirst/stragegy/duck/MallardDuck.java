@@ -1,4 +1,8 @@
-package headfirst.stragegy;
+package headfirst.stragegy.duck;
+
+import headfirst.stragegy.duck.Duck;
+import headfirst.stragegy.duck.fly.FlyWithWings;
+import headfirst.stragegy.duck.quack.Quack;
 
 /**
  * @author: sheldon

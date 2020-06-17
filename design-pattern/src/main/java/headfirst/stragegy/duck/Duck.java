@@ -1,4 +1,7 @@
-package headfirst.stragegy;
+package headfirst.stragegy.duck;
+
+import headfirst.stragegy.duck.fly.FlyBehavior;
+import headfirst.stragegy.duck.quack.QuackBehavior;
 
 /**
  * @author: sheldon
@@ -12,6 +15,14 @@ public abstract class Duck {
     QuackBehavior quackBehavior;
 
     public Duck() { }
+
+    public void setFlyBehavior(FlyBehavior fb) {
+        this.flyBehavior = fb;
+    }
+
+    public void setQuackBehavior(QuackBehavior qb) {
+        this.quackBehavior = qb;
+    }
 
     public abstract void display();
 
