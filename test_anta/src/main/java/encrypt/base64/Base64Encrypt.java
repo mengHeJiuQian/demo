@@ -1,7 +1,6 @@
 package encrypt.base64;
 
 import org.junit.jupiter.api.Test;
-import sun.misc.BASE64Encoder;
 
 import java.util.Base64;
 
