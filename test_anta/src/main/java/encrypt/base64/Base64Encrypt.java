@@ -16,8 +16,11 @@ public class Base64Encrypt {
     @Test
     public void testBase64Encrypt() {
         String msg = "刘洋";
-        BASE64Encoder encoder = new BASE64Encoder();
-        String encode = encoder.encode(msg.getBytes());
+        /*BASE64Encoder encoder = new BASE64Encoder();
+        String encode = encoder.encode(msg.getBytes());*/
+
+        String encode = Base64.getEncoder().encodeToString(msg.getBytes());
+
         System.out.println(encode);
 
         byte[] decode = Base64.getDecoder().decode(encode);

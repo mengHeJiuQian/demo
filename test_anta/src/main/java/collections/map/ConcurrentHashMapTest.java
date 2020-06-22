@@ -33,4 +33,10 @@ public class ConcurrentHashMapTest {
         System.out.println(hash);
     }
 
+    @Test
+    public void testConcurrentHashMap() {
+        ConcurrentHashMap<String, String> chm = new ConcurrentHashMap<>();
+        chm.put("name", "liuyang");
+    }
+
 }
