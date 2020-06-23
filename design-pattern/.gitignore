@@ -1,12 +1,5 @@
 .idea
 target/
-/out
-*/out
-
-*top
 
 
-
-top
-
-.iml
+*.iml
