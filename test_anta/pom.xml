@@ -16,24 +16,18 @@
 
 
         <commons-lang.version>2.6</commons-lang.version>
-        <guava.version>23.0</guava.version>
-        <druid.version>1.1.8</druid.version>
-        <spring-boot.version>2.0.2.RELEASE</spring-boot.version>
-        <motor.version>5.3.2.RELEASE</motor.version>
-        <spectrum.version>3.4.0.RELEASE</spectrum.version>
         <druid.version>1.0.14</druid.version>
-        <springfox-version>2.6.1</springfox-version>
-        <epassport.version>1.0.0-RELEASE</epassport.version>
-        <sdk-epassport.version>1.1.0-SNAPSHOT</sdk-epassport.version>
-
-        <poi.version>4.1.0</poi.version>
-        <kafka.version>2.1.0</kafka.version>
-        <xlsx-streamer.version>2.1.0</xlsx-streamer.version>
-
+        <druid.version>1.1.8</druid.version>
         <fastjson.version>1.2.45</fastjson.version>
-
-        <mainClass>com.shuyun.ccms.ms.benefit.Application</mainClass>
-
+        <guava.version>23.0</guava.version>
+        <kafka.version>2.1.0</kafka.version>
+        <motor.version>5.3.2.RELEASE</motor.version>
+        <spring-boot.version>2.0.2.RELEASE</spring-boot.version>
+        <spectrum.version>3.4.0.RELEASE</spectrum.version>
+        <springfox-version>2.6.1</springfox-version>
+        <sqljdbc.version>4.0</sqljdbc.version>
+        <poi.version>4.1.0</poi.version>
+        <xlsx-streamer.version>2.1.0</xlsx-streamer.version>
     </properties>
 
     <dependencyManagement>
@@ -50,7 +44,11 @@
 
 
     <dependencies>
-
+        <dependency>
+            <groupId>com.microsoft.sqlserver</groupId>
+            <artifactId>sqljdbc4</artifactId>
+            <version>${sqljdbc.version}</version>
+        </dependency>
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>

@@ -16,6 +16,14 @@ import java.util.stream.Collectors;
 public class TestString {
 
     @Test
+    public void testSubString() {
+        String serviceCode = "7F8441F2-3B2D-4EAE-925D-AFD4CCF1B98A";
+        String substring = serviceCode.substring(0, serviceCode.indexOf("_"));
+        System.out.println(substring);
+    }
+
+
+    @Test
     public void testEmoji() {
         String emoji = "%E2%98%A3%EF%B8%8E%E2%98%A2%EF%B8%8E%E2%9C%8C%F0%9F%87%A6%F0%9F%87%B1%F0%9F%87%A9%F0%9F%87%BF%F0%9F%87%A9%F0%9F%87%BF%F0%9F%87%A9%F0%9F%87%BF%F0%9F%87%A9%F0%9F%87%BF";
         System.out.println();
