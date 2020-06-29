@@ -13,5 +13,7 @@ public class WeatherStation {
         CurrentConditionDisplay conditionDisplay = new CurrentConditionDisplay(weatherData);
 
         weatherData.setMeasurements(35, 80, 30.4F);
+
+        System.out.println("");
     }
 }
