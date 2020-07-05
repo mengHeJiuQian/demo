@@ -19,6 +19,98 @@ import java.util.stream.Collectors;
 public class JsonTest {
 
     @Test
+    public void testTreeMap() {
+        TreeMap treeMap = new TreeMap();
+        treeMap.put("name", "liuyang");
+        treeMap.put("age", 1);
+
+        String s = JSONTool.toJSON(treeMap);
+        System.out.println(s);
+
+        TreeMap treeMap1 = JSONTool.toObject(s, TreeMap.class);
+        System.out.println(treeMap1);
+
+    }
+
+    @Test
+    public void testFastJsonPrivateConstruct() {
+        String jsonStr = "{\n" +
+                "        \"name\":\"tom\",\n" +
+                "        \"age\":3\n" +
+                "    }";
+
+        jsonStr = "{\n" +
+                "    \"data\":{\n" +
+                "        \"first\":{\n" +
+                "            \"color\":\"#173177\",\n" +
+                "            \"value\":\"尊敬的客户，健康顾问已受理您的咨询申请，您可直接点击此条消息或者“历史服务查询”中的“继续服务”进一步咨询。服务时间为受理后的24小时内。如超时，请另行申请，敬请谅解。 \n" +
+                "\"\n" +
+                "        },\n" +
+                "        \"keyword1\":{\n" +
+                "            \"color\":\"#173177\",\n" +
+                "            \"value\":\"无实大大\"\n" +
+                "        },\n" +
+                "        \"keyword2\":{\n" +
+                "            \"color\":\"#173177\",\n" +
+                "            \"value\":\"2020-06-15 14:29:00\"\n" +
+                "        },\n" +
+                "        \"keyword3\":{\n" +
+                "            \"color\":\"#173177\",\n" +
+                "            \"value\":\"2020-06-16 14:29:00\"\n" +
+                "        },\n" +
+                "        \"remark\":{\n" +
+                "            \"color\":\"#173177\",\n" +
+                "            \"value\":\"\"\n" +
+                "        }\n" +
+                "    },\n" +
+                "    \"templateId\":\"dgCOlHEAZlqLOB0xVpf5sbrCLEs2d5oG5yGZ5MMSsFc\",\n" +
+                "    \"touser\":\"odfuVv_1PHxO8DX61CaVFWPjU05Y\",\n" +
+                "    \"url\":\"www.baidu.com\"\n" +
+                "}";
+//        Gson gson = new Gson();
+//        TemplateData templateData = gson.fromJson(jsonStr, TemplateData.class);
+//        System.out.println(templateData);
+
+//        TemplateData templateData = JSONTool.toObject(jsonStr, TemplateData.class);
+//        System.out.println(templateData);
+        JSONObject jsonObject = JSONObject.parseObject(jsonStr);
+        String url = jsonObject.getString("url");
+        String touser = jsonObject.getString("touser");
+        String templateId = jsonObject.getString("templateId");
+
+        Map<String, Object> map = (Map<String, Object>) jsonObject.get("data");
+
+        TemplateData templateData = TemplateData.getTemplateData();
+        templateData.setUrl(url);
+        templateData.setTemplateId(templateId);
+        templateData.setTouser(touser);
+
+        for (Map.Entry<String, Object> entry : map.entrySet()) {
+            String keyword = entry.getKey();
+
+            Map<String, String> colorMap = (Map<String, String>) entry.getValue();
+            String color = (String) colorMap.get("color");
+            String value = (String) colorMap.get("value");
+
+            System.out.println(keyword);
+            System.out.println(color);
+            System.out.println(value);
+            templateData.add(keyword, value, color);
+        }
+
+        System.out.println(JSON.toJSONString(templateData));
+    }
+
+    @Test
+    public void testFastJsonWithNullObj() {
+        // fastjson 会将空对象，转为“null”字符串
+        System.out.println(JSON.toJSONString(null));
+
+        Gson gson = new Gson();
+        System.out.println(gson.toJson(null));
+    }
+
+    @Test
     public void testBatchInsert10000() {
         int testNum = 10000;
         List list = new ArrayList(testNum);

@@ -1,5 +1,6 @@
 package string;
 
+import org.apache.commons.lang.StringUtils;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -9,6 +10,16 @@ import org.junit.jupiter.api.Test;
  * @date 2019/4/14 21:01
  */
 public class StringTest {
+
+    @Test
+    public void testBlank() {
+        String testStr = null;
+        if (StringUtils.isBlank(testStr)) {
+            System.out.println("空");
+        } else {
+            System.out.println("非空");
+        }
+    }
 
     public static void main(String[] args) {
         printStr("yangliu");
