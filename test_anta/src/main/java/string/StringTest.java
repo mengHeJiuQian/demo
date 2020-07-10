@@ -12,6 +12,11 @@ import org.junit.jupiter.api.Test;
 public class StringTest {
 
     @Test
+    public void testEquals() {
+        System.out.println("female".equals("female") ? "male" : "female");
+    }
+
+    @Test
     public void testBlank() {
         String testStr = null;
         if (StringUtils.isBlank(testStr)) {

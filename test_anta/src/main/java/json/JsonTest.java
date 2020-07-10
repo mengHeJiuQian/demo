@@ -19,6 +19,14 @@ import java.util.stream.Collectors;
 public class JsonTest {
 
     @Test
+    public void testJson() {
+        Map<String, String> map = new HashMap<>();
+        String value = "{\"IDCard\":\"110103198011080621\",\"IDType\":\"1\",\"customerId\":\"00926314\",\"customerName\":\"CLIENT00926314\",\"packageCode\":\"78DB89B9-92B6-46D9-8188-794D707D8A26\",\"packageName\":\"都会健康 （AGY）-ED28AA-白金+海外就医\",\"policyNo\":\"01240095\",\"productCode\":\"ED28AA\",\"productName\":\"都会健康 （AGY）\",\"reserveDate\":\"2019-03-18 09:06:52\",\"residueNumber\":37,\"serviceCode\":\"AK_08\",\"serviceDate\":\"2019-03-18 09:06:52\",\"serviceName\":\"导医服务（不限重疾）\",\"serviceNumber\":500,\"serviceOrderId\":\"155287121215495\",\"serviceStatus\":\"待服务\",\"serviceStatusCode\":\"011\",\"tel\":\"13482058924\"}";
+        map.put("info", value);
+        System.out.println(JSON.toJSONString(map));
+    }
+
+    @Test
     public void testTreeMap() {
         TreeMap treeMap = new TreeMap();
         treeMap.put("name", "liuyang");
