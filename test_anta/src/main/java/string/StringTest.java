@@ -12,6 +12,12 @@ import org.junit.jupiter.api.Test;
 public class StringTest {
 
     @Test
+    public void testSubString() {
+        System.out.println("01".substring(0, 2));
+        System.out.println("011".substring(0, 2));
+    }
+
+    @Test
     public void testEquals() {
         System.out.println("female".equals("female") ? "male" : "female");
     }

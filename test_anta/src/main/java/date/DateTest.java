@@ -3,6 +3,7 @@ package date;
 import org.junit.jupiter.api.Test;
 
 import java.sql.Time;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Date;
 
@@ -12,6 +13,19 @@ import java.util.Date;
  * @Date 2019/4/2 18:13
  */
 public class DateTest {
+
+    @Test
+    public void testCat() {
+        Cat cat = new Cat("tom", LocalDateTime.now());
+        String name = cat.getName();
+        name = "123";
+
+        LocalDateTime birth = cat.getBirth();
+        birth.plusDays(1); // plusDays()方法会返回新的LocalDateTime对象。
+        System.out.println(cat.toString());
+    }
+
+
     @Test
     public void testLocalTime() {
         LocalTime TimeA = LocalTime.of(9, 0, 0);

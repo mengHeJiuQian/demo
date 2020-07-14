@@ -1,6 +1,6 @@
-package util.excel.write;
+package utils.excel.write;
 
-import util.excel.utils.ExcelUtil;
+import utils.excel.utils.ExcelUtil;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 

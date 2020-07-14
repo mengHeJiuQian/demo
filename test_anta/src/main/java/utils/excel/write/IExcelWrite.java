@@ -1,4 +1,4 @@
-package util.excel.write;
+package utils.excel.write;
 
 import java.io.OutputStream;
 import java.util.List;

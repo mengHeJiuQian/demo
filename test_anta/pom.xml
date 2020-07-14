@@ -21,7 +21,9 @@
         <fastjson.version>1.2.45</fastjson.version>
         <guava.version>23.0</guava.version>
         <kafka.version>2.1.0</kafka.version>
+        <mail.version>1.6.2</mail.version>
         <motor.version>5.3.2.RELEASE</motor.version>
+        <poi.version>3.17</poi.version>
         <spring-boot.version>2.0.2.RELEASE</spring-boot.version>
         <spectrum.version>3.4.0.RELEASE</spectrum.version>
         <springfox-version>2.6.1</springfox-version>
@@ -310,6 +312,26 @@
             <artifactId>aspectjweaver</artifactId>
             <version>1.8.13</version>
             <scope>compile</scope>
+        </dependency>
+
+        <!-- send mail -->
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <version>${mail.version}</version>
+        </dependency>
+
+        <!-- Excel -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>${poi.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-codec</artifactId>
+                    <groupId>commons-codec</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 

@@ -1,4 +1,4 @@
-package util.excel.example;
+package utils.excel.example;
 
 import lombok.Data;
 
