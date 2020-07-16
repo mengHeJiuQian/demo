@@ -15,17 +15,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.Marshaller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang.StringUtils;
-import org.dom4j.io.OutputFormat;
-import org.dom4j.io.XMLWriter;
-import org.xml.sax.Attributes;
-import org.xml.sax.SAXException;
-import org.xml.sax.helpers.XMLFilterImpl;
+
 
 /**
  * 功能描述：
@@ -167,7 +161,7 @@ public final class JSONTool {
      * listToJson.
      *
      * @param list 集合
-     * @param <T> 泛型
+     * @param <T>  泛型
      * @return
      */
     public static <T> String listToJson(List<T> list) {
@@ -312,13 +306,14 @@ public final class JSONTool {
      *
      * @methodname: toMap
      * @params: [json]
-     * @returns: java.util.Map[java.lang.String,java.lang.String]
+     * @returns: java.util.Map[java.lang.String, java.lang.String]
      * @author: somnus
      * @date: 2019-11-25 19:00:02
      */
     public static Map<String, String> json2Map(String json) {
         try {
-            TypeReference<Map<String, String>> ref = new TypeReference<Map<String, String>>() {};
+            TypeReference<Map<String, String>> ref = new TypeReference<Map<String, String>>() {
+            };
             return getMapperInstance(false).readValue(json, ref);
         } catch (Exception e) {
             log.error("json转Map异常：", e);
@@ -328,6 +323,7 @@ public final class JSONTool {
 
     /**
      * 将Map的Key转成大写.
+     *
      * @param body 原Map
      * @return
      */

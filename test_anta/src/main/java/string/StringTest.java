@@ -3,6 +3,11 @@ package string;
 import org.apache.commons.lang.StringUtils;
 import org.junit.jupiter.api.Test;
 
+import java.math.BigInteger;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * describe:
  *
@@ -10,6 +15,32 @@ import org.junit.jupiter.api.Test;
  * @date 2019/4/14 21:01
  */
 public class StringTest {
+
+    @Test
+    public void testPrint() {
+        System.out.println("night mode");
+        /* \u000d System.out.println("night mode"); */
+
+        Set<String> set = new HashSet<String>() {{
+            add("wmyskxz");
+            add("is");
+            add("awesome");
+            add("!");
+        }};
+        System.out.println(set);
+        // Arrays.asList();
+
+        int[] arr = {1,3,4,5,6, 8};
+        int pos = Arrays.binarySearch(arr, 7);
+        System.out.println("Element has to be inserted at: " + pos);
+        System.out.println("Element has to be inserted at: " + ~pos);
+
+        // 快速判断素数
+        boolean probablePrime = BigInteger.valueOf(1235).isProbablePrime(1);
+        System.out.println(probablePrime);
+
+
+    }
 
     @Test
     public void testSubString() {
