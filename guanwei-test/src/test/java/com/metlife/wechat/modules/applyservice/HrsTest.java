@@ -22,12 +22,12 @@ import retrofit2.Call;
 public class HrsTest {
 
     @Autowired
-    private HrsAPI hrsAPI;
+    private HrsAPI hrsApi;
 
     @Test
     public void testHello() {
         String name = "liuyang";
-        Call<BaseResponse> response = hrsAPI.hello(name);
+        Call<BaseResponse> response = hrsApi.hello(name);
         ResponseUtil.printResponse(response);
     }
 }

@@ -10,13 +10,13 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 创建人：yang.liu
+ * @author：yang.liu
  * 创建时间：2020/7/23 13:06
  * 版本：1.0
- * 内容描述：
+ * 内容描述：增值服务处理类配置
  */
 @Configuration
-public class RestAdapterConfig {
+public class ApplyServiceConfig {
 
     private String baseUrl = "http://localhost:8080/wechatmobile/";
 
@@ -31,13 +31,11 @@ public class RestAdapterConfig {
                 .writeTimeout(3, TimeUnit.MINUTES)
                 .addInterceptor(chain -> {
                     Request original = chain.request();
-
 //                    Map<String, String> headerMap = SignConvertUtil.generateHeader(original.url().encodedPath(),
 //                            auth,
 //                            caller,
 //                            secret
 //                    );
-
 //                    Headers headers = Headers.of(headerMap);
 
                     Request request = original.newBuilder()
@@ -55,7 +53,7 @@ public class RestAdapterConfig {
     }
 
     @Bean
-    public HrsAPI hrsAPI(Retrofit hrsRetrofit) {
+    public HrsAPI hrsApi(Retrofit hrsRetrofit) {
         return hrsRetrofit.create(HrsAPI.class);
     }
 

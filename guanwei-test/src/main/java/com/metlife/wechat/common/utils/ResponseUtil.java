@@ -17,7 +17,7 @@ public class ResponseUtil {
 
     public static <T> void printResponse(Call<T> call) {
         try {
-            log.info("成功sdfas");
+            log.info("开始调用");
             Response<T> response = call.execute();
             printResponse(response);
         } catch (IOException e) {
