@@ -1,10 +1,10 @@
 package date;
 
 import org.junit.jupiter.api.Test;
-
-import java.sql.Time;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.Year;
 import java.util.Date;
 
 /**
@@ -13,6 +13,18 @@ import java.util.Date;
  * @Date 2019/4/2 18:13
  */
 public class DateTest {
+
+    /**
+     * 获取当前年
+     */
+    @Test
+    public void testGetCurrentYear() {
+        int value = Year.now().getValue();
+        System.out.println(value);
+
+        int year = LocalDate.now().getYear();
+        System.out.println(year);
+    }
 
     @Test
     public void testCat() {
@@ -34,7 +46,7 @@ public class DateTest {
     }
 
     public static void main(String[] args) {
-        Integer expiresDay = null;
+        Integer expiresDay = 1;
         Date date = DateUtils.addDay(new Date(), expiresDay);
         System.out.println(date);
     }
