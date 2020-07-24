@@ -1,6 +1,4 @@
-package com.metlife.wechat.common.result;
-
-import lombok.AllArgsConstructor;
+package metlife.wechat.common.result;
 
 import java.io.Serializable;
 
@@ -33,22 +31,12 @@ public class BaseResponse implements Serializable {
      */
     private Object data;
 
-
-
     /**
      * success.
      */
     private boolean success;
 
-    public BaseResponse() {
-    }
-
-    public BaseResponse(int code, String message, Object data, boolean success) {
-        this.code = code;
-        this.message = message;
-        this.data = data;
-        this.success = success;
-    }
+    public BaseResponse() { }
 
     /**
      * success.
