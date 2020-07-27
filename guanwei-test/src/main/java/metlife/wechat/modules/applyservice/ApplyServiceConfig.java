@@ -1,10 +1,13 @@
 package metlife.wechat.modules.applyservice;
 
+import com.alibaba.fastjson.support.retrofit.Retrofit2ConverterFactory;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.logging.HttpLoggingInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 
 import java.util.concurrent.TimeUnit;
@@ -22,6 +25,8 @@ public class ApplyServiceConfig {
 
     @Bean
     public Retrofit hrsRetrofit() {
+        HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
+        httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         OkHttpClient client = new OkHttpClient.Builder()
                 .retryOnConnectionFailure(true)
@@ -29,25 +34,12 @@ public class ApplyServiceConfig {
                 .connectTimeout(3, TimeUnit.MINUTES)
                 .readTimeout(3, TimeUnit.MINUTES)
                 .writeTimeout(3, TimeUnit.MINUTES)
-                .addInterceptor(chain -> {
-                    Request original = chain.request();
-//                    Map<String, String> headerMap = SignConvertUtil.generateHeader(original.url().encodedPath(),
-//                            auth,
-//                            caller,
-//                            secret
-//                    );
-//                    Headers headers = Headers.of(headerMap);
-
-                    Request request = original.newBuilder()
-                            .method(original.method(), original.body())
-                            .build();
-
-                    return chain.proceed(request);
-                }).build();
+                .addInterceptor(httpLoggingInterceptor)
+                .build();
 
         return new Retrofit.Builder()
                 .baseUrl(baseUrl)
-                .addConverterFactory(JacksonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build();
     }

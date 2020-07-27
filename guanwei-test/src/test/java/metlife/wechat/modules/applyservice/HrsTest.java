@@ -1,14 +1,16 @@
 package metlife.wechat.modules.applyservice;
 
-import metlife.wechat.common.utils.ResponseUtil;
-import lombok.extern.slf4j.Slf4j;
-import okhttp3.ResponseBody;
+import com.alibaba.fastjson.JSONObject;
+import com.metlife.wechat.common.utils.AesTool;
+import com.metlife.wechat.modules.model.applyservice.VhsApplyServiceEntity;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
-import retrofit2.Call;
+
+import java.io.IOException;
 
 /**
  * 创建人：yang.liu
@@ -16,20 +18,30 @@ import retrofit2.Call;
  * 版本：1.0
  * 内容描述：
  */
-@Slf4j
-@RunWith(SpringRunner.class)
-//@ContextConfiguration(locations = "classpath:application.properties")
-//@TestPropertySource(locations = "classpath:application.properties")
-@SpringBootTest
+//@Slf4j
+//@RunWith(SpringRunner.class)
+////@ContextConfiguration(locations = "classpath:application.properties")
+////@TestPropertySource(locations = "classpath:application.properties")
+//@SpringBootTest
 public class HrsTest {
 
-    @Autowired
-    private HrsApi hrsApi;
+    private String AES_KEY = "MetLife&VHS.2020";
+    private MediaType MEDIA_TYPE_MARKDOWN = MediaType.get("text/x-markdown; charset=utf-8");
 
     @Test
-    public void testHello() {
-        String name = "liuyang";
-        Call<ResponseBody> response = hrsApi.hello(name);
-        ResponseUtil.printResponse(response);
+    public void testReceiveVhsOrderInfo1() throws IOException {
+        VhsApplyServiceEntity entity = new VhsApplyServiceEntity();
+        String encryptStr = AesTool.encrypt(JSONObject.toJSONString(entity), AES_KEY);
+
+        Request request = new Request.Builder()
+                .url("http://localhost:8080/wechatmobile/receiveVhsOrderInfo")
+                .post(RequestBody.create(MEDIA_TYPE_MARKDOWN, encryptStr))
+                .build();
+        OkHttpClient client = new OkHttpClient();
+        try ( Response response = client.newCall(request).execute() ) {
+            if (!response.isSuccessful())
+                throw new IOException("Unexpected code " + response);
+            System.out.println(AesTool.decrypt(response.body().string(), "MetLife&VHS.2020"));
+        }
     }
 }

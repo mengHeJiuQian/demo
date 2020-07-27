@@ -23,7 +23,7 @@
         <commons-io.version>1.3.2</commons-io.version>
         <commons-net.version>3.3</commons-net.version>
         <fastjson.version>1.2.72</fastjson.version>
-        <retrofit.version>2.5.0</retrofit.version>
+        <retrofit.version>2.9.0</retrofit.version>
         <springfox-version>2.6.1</springfox-version>
     </properties>
 
@@ -42,15 +42,21 @@
             <artifactId>springfox-swagger-ui</artifactId>
             <version>${springfox-version}</version>
         </dependency>
+        <!-- retrofit2相关 -->
         <dependency>
             <groupId>com.squareup.retrofit2</groupId>
             <artifactId>retrofit</artifactId>
-            <version>2.5.0</version>
+            <version>${retrofit.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.retrofit2</groupId>
+            <artifactId>converter-gson</artifactId>
+            <version>${retrofit.version}</version>
         </dependency>
         <dependency>
             <groupId>com.squareup.retrofit2</groupId>
             <artifactId>converter-jackson</artifactId>
-            <version>2.5.0</version>
+            <version>${retrofit.version}</version>
         </dependency>
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
@@ -58,6 +64,7 @@
             <version>3.12.0</version>
         </dependency>
 
+        <!-- fastjson相关 -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
@@ -96,6 +103,11 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>findbugs</artifactId>
+            <version>3.0.1</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
