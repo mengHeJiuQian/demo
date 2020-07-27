@@ -33,7 +33,8 @@ public class DateTest {
         name = "123";
 
         LocalDateTime birth = cat.getBirth();
-        birth.plusDays(1); // plusDays()方法会返回新的LocalDateTime对象。
+        // plusDays()方法会返回新的LocalDateTime对象。
+        birth.plusDays(1);
         System.out.println(cat.toString());
     }
 
