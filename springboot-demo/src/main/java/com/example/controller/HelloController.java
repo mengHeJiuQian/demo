@@ -1,6 +1,8 @@
 package com.example.controller;
 
+import com.example.entity.Champion;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,6 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 @RestController
 public class HelloController {
+
+    /**
+     * 测试两个类同名不同类型，注入会报对象名重复而无法创建Spring容器
+     */
+    @Autowired
+    private Champion champion;
 
     @GetMapping("/hello")
     public String hello(String name) {
