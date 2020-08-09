@@ -4,9 +4,12 @@ import org.apache.commons.lang.StringUtils;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * describe:
@@ -18,6 +21,25 @@ public class StringTest {
 
     @Test
     public void testPrint() {
+        String[] strArr = new String[]{null, null, null};
+        String reason = StringUtils.join(strArr , ":");
+        System.out.println(reason);
+
+        List<String> list = new ArrayList<String>(){{
+            add(null);
+            add(null);
+            add(null);
+        }};
+        String reason2 = StringUtils.join(list , ":");
+        System.out.println(reason2);
+
+
+        String result = list.stream().collect(Collectors.joining(""));
+        System.out.println(result);
+
+        String join = String.join(":", list);
+        System.out.println(join);
+
         System.out.println("night mode");
         /* \u000d System.out.println("night mode"); */
 
