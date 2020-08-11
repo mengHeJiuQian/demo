@@ -1,12 +1,18 @@
 package com.atguigu.bean;
 
+import org.springframework.beans.factory.annotation.Value;
+
 /**
  * @author yang.liu
  */
 public class Person {
 
+    @Value("张三")
     private String name;
+    @Value("#{20 + 5}")
     private Integer age;
+    @Value("${person.nickName}")
+    private String nickName;
 
     public Person() { }
 
@@ -20,6 +26,7 @@ public class Person {
         return "Person{" +
                 "name='" + name + '\'' +
                 ", age=" + age +
+                ", nickName='" + nickName + '\'' +
                 '}';
     }
 }
