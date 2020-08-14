@@ -1,10 +1,13 @@
 package com.atguigu.bean;
 
+import org.springframework.stereotype.Component;
+
 /**
  * @author yang.liu
  * @createtime 2020/8/9 22:04
  * @description
  */
+@Component
 public class Car {
 
     public Car() {
