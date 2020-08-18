@@ -1,37 +1,39 @@
 package json;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
-import java.util.TreeMap;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
+import java.util.TreeMap;
 
 /**
- * 功能描述：
- * 微信模板消息封装  -- 实体信息.
- *
- * @version V1.0
- * @classname: com.metlife.wechat.modules.model.wx.TemplateData.java
- * @copyright Powered By wechat
- * @author: somnus
- * @date: 2019-12-10 19:04:29
+ * 模板数据封装  -- 实体信息.
  */
 @Data
-public final class TemplateData {
+public final class TemplateData implements Serializable {
 
-    /** 接收者标识. */
+    private static final long serialVersionUID = -9211325405900846359L;
+
+    /**
+     * String.
+     */
     private String touser;
 
-    /** 模板Id. */
+    /**
+     * String.
+     */
     @JsonProperty(value = "template_id")
     private String templateId;
 
-    /** 模板对象. */
+    /**
+     * TemplateItem.
+     */
     private TemplateItem data;
 
-    /** 点击模板消息跳转链接. */
+    /**
+     * 模板链接地址.
+     */
     private String url;
 
     /**
@@ -40,27 +42,22 @@ public final class TemplateData {
     private MiniProgram miniprogram;
 
     /**
-     * 功能描述:
-     * 获取模板数据.
+     * getTemplateData.
      *
-     * @methodname: getTemplateData
-     * @params: []
-     * @returns: com.metlife.wechat.modules.model.wx.TemplateData
-     * @author: somnus
-     * @date: 2019-12-10 19:05:59
+     * @return
      */
     public static TemplateData getTemplateData() {
         return new TemplateData();
     }
 
-    TemplateData() {
+    public TemplateData() {
         this.data = new TemplateItem();
     }
 
     /**
      * add.
      *
-     * @param key   键
+     * @param key   钥匙
      * @param value 值
      * @param color 颜色代码
      * @return
@@ -73,12 +70,13 @@ public final class TemplateData {
     /**
      * TemplateItem.
      */
-    public static class TemplateItem extends TreeMap<String, Item> {
+    public class TemplateItem extends TreeMap<String, Item> {
+        private static final long serialVersionUID = -3728490424738325020L;
 
         /**
          * TemplateItem.
          */
-        private TemplateItem() {
+        public TemplateItem() {
         }
 
         /**
@@ -96,9 +94,8 @@ public final class TemplateData {
      * Item.
      */
     @Data
-    @NoArgsConstructor
     @AllArgsConstructor
-    private static class Item {
+    private class Item {
 
         /**
          * value.
@@ -118,6 +115,7 @@ public final class TemplateData {
     public static class MiniProgram {
         @JsonProperty(value = "appid")
         private String appId;
+
         @JsonProperty(value = "pagepath")
         private String pagePath;
     }

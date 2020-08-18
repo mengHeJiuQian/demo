@@ -1,10 +1,12 @@
 package org.kafka.springboot;
 
+import org.kafka.springboot.producer.KafkaSender;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.kafka.KafkaAutoConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.kafka.annotation.EnableKafka;
 
 /**
  * describe:

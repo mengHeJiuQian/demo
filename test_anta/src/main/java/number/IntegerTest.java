@@ -19,10 +19,6 @@ public class IntegerTest {
         Integer i3 = 128;
         Integer i4 = 128;
         System.out.println(i3 == i4);
-
-        Integer i5 = 128;
-        Integer i6 = 128;
-        System.out.println(i5.equals(i6));
     }
 
     @Test

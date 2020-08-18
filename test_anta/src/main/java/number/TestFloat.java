@@ -1,9 +1,8 @@
 package number;
 
-import org.junit.Test;
-
 import java.math.BigDecimal;
-import java.text.DecimalFormat;
+
+import org.junit.jupiter.api.Test;
 
 /**
  * @Description TODO
@@ -25,7 +24,7 @@ public class TestFloat {
 
     // 测试float类型存储浮点数
     @Test
-    public void testFloat() {
+    public static void testFloat() {
         System.out.println(0.2 + 0.1);
         System.out.println(0.3 - 0.1);
         System.out.println(0.2 * 0.1);
@@ -39,15 +38,11 @@ public class TestFloat {
         BigDecimal augend = new BigDecimal(0.01);
         BigDecimal result = addend.add(augend);
         System.out.println(result.doubleValue());
-
-        DecimalFormat df=new DecimalFormat("000,000.000￥");
-        String str = df.format(result);
-        System.out.println(str);
     }
 
     // 测试BigDecimal类型存储浮点数
     @Test
-    public void testBigDecimal() {
+    public static void testBigDecimal() {
         BigDecimal bInt = new BigDecimal(2);
         // 不推荐 bDouble=2.29999999999999982236431605997495353221893310546875
         BigDecimal bDouble = new BigDecimal(2.3);
@@ -59,7 +54,7 @@ public class TestFloat {
 
     // 测试BigDecimal的加减乘除功能
     @Test
-    public void testMathematical() {
+    public static void testMathematical() {
         BigDecimal a = new BigDecimal(12);
         BigDecimal b = new BigDecimal(7);
 
@@ -73,6 +68,10 @@ public class TestFloat {
         System.out.println(a.subtract(b));
         System.out.println(a.multiply(b));
         System.out.println(a.divide(b));
+
+    }
+
+    public static void main(String[] args) {
 
     }
 

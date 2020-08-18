@@ -42,15 +42,46 @@ public class JsonTest {
 
     @Test
     public void testFastJsonPrivateConstruct() {
-        String jsonStr = "{\"data\":{\"first\":{\"color\":\"#173177\",\"value\":\"尊敬的客户，您的健康问诊申请因健康顾问忙线中而让您等待，现健康顾问已上线，请在服务截止时间前直接点击此条消息或者“历史服务查询”中的“继续服务”。为避免给您带来打扰，每次问诊仅推送前两次医生回复提醒信息，请在问诊期间及时关注医生回复，谢谢！ \\n\"},\"keyword1\":{\"color\":\"#173177\",\"value\":\"刘三六\"},\"keyword2\":{\"color\":\"#173177\",\"value\":\"2020-06-15 14:29:00\"},\"keyword3\":{\"color\":\"#173177\",\"value\":\"2020-06-16 14:29:00\"},\"remark\":{\"color\":\"#173177\",\"value\":\"\"}},\"template_id\":\"dgCOlHEAZlqLOB0xVpf5sbrCLEs2d5oG5yGZ5MMSsFc\",\"touser\":\"odfuVv_1PHxO8DX61CaVFWPjU05Y\",\"url\":\"www.baidu.com\"}";
-        TemplateData templateData = JSONTool.toObject(jsonStr, TemplateData.class);
+        String jsonStr = "{\n" +
+                "        \"name\":\"tom\",\n" +
+                "        \"age\":3\n" +
+                "    }";
 
-        jsonStr = JSONTool.toJSON(templateData);
-        System.out.println("反序列化后：" + jsonStr);
+        jsonStr = "{\n" +
+                "    \"data\":{\n" +
+                "        \"first\":{\n" +
+                "            \"color\":\"#173177\",\n" +
+                "            \"value\":\"尊敬的客户，健康顾问已受理您的咨询申请，您可直接点击此条消息或者“历史服务查询”中的“继续服务”进一步咨询。服务时间为受理后的24小时内。如超时，请另行申请，敬请谅解。 \n" +
+                "\"\n" +
+                "        },\n" +
+                "        \"keyword1\":{\n" +
+                "            \"color\":\"#173177\",\n" +
+                "            \"value\":\"无实大大\"\n" +
+                "        },\n" +
+                "        \"keyword2\":{\n" +
+                "            \"color\":\"#173177\",\n" +
+                "            \"value\":\"2020-06-15 14:29:00\"\n" +
+                "        },\n" +
+                "        \"keyword3\":{\n" +
+                "            \"color\":\"#173177\",\n" +
+                "            \"value\":\"2020-06-16 14:29:00\"\n" +
+                "        },\n" +
+                "        \"remark\":{\n" +
+                "            \"color\":\"#173177\",\n" +
+                "            \"value\":\"\"\n" +
+                "        }\n" +
+                "    },\n" +
+                "    \"templateId\":\"dgCOlHEAZlqLOB0xVpf5sbrCLEs2d5oG5yGZ5MMSsFc\",\n" +
+                "    \"touser\":\"odfuVv_1PHxO8DX61CaVFWPjU05Y\",\n" +
+                "    \"url\":\"www.baidu.com\"\n" +
+                "}";
+//        Gson gson = new Gson();
+//        TemplateData templateData = gson.fromJson(jsonStr, TemplateData.class);
+//        System.out.println(templateData);
 
-
-
-        /*JSONObject jsonObject = JSONObject.parseObject(jsonStr);
+//        TemplateData templateData = JSONTool.toObject(jsonStr, TemplateData.class);
+//        System.out.println(templateData);
+        JSONObject jsonObject = JSONObject.parseObject(jsonStr);
         String url = jsonObject.getString("url");
         String touser = jsonObject.getString("touser");
         String templateId = jsonObject.getString("templateId");
@@ -73,9 +104,9 @@ public class JsonTest {
             System.out.println(color);
             System.out.println(value);
             templateData.add(keyword, value, color);
-        }*/
+        }
 
-
+        System.out.println(JSON.toJSONString(templateData));
     }
 
     @Test
