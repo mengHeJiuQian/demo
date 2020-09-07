@@ -8,6 +8,6 @@ import org.springframework.stereotype.Component;
  * @version：1.0
  * @description：
  */
-@Component
+@Component("sencondPlace")
 public class Champion {
 }
