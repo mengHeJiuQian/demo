@@ -3,8 +3,8 @@ package main
 import (
 	"container/list"
 	"context"
+	"crypto/md5"
 	"fmt"
-	"github.com/satori/go.uuid"
 	"go.mongodb.org/mongo-driver/mongo" //MongoDB的Go驱动包
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"io/ioutil"
@@ -19,6 +19,32 @@ const mongoServer = "localhost"
 const mongoPort = "27017"
 const mongoDatabase = "csdn_article"
 const mongoCollection = "article_base"
+
+
+// 程序入口
+func main() {
+
+	html, _ := HttpGetHtml("https://blog.csdn.net/iotisan/article/details/104463582")
+	//fmt.Println(html)
+	urlList := filterCsdnHref(html)
+
+	client := openMongoClient()
+
+	saveUrl(urlList, client)
+	// https://www.cnblogs.com/dongyuq1/p/13595258.html
+	// https://www.cnblogs.com/Dr-wei/p/11742293.html
+
+	//client.close
+}
+
+type UrlInfo struct {
+	Id string
+	Url string
+	CreateTime string
+}
+
+//type DateUtil struct {
+//}
 
 // 获取url的页面
 func HttpGetHtml(url string) (result string, err error) {
@@ -77,31 +103,6 @@ func openMongoClient() (*mongo.Collection) {
 	return collection
 }
 
-// 程序入口
-func main() {
-
-	html, _ := HttpGetHtml("https://blog.csdn.net/iotisan/article/details/104463582")
-	//fmt.Println(html)
-	urlList := filterCsdnHref(html)
-
-	client := openMongoClient()
-
-	saveUrl(urlList, client)
-	// https://www.cnblogs.com/dongyuq1/p/13595258.html
-	// https://www.cnblogs.com/Dr-wei/p/11742293.html
-
-	//client.close
-}
-
-type UrlInfo struct {
-	Id string
-	Url string
-	CreateTime string
-}
-
-//type DateUtil struct {
-//}
-
 func NOW_YYYY_MM_DD_HH_MM_SS() (timeStr string) {
 	now  := time.Now()
 	//Year = now.Year()
@@ -120,16 +121,30 @@ func NOW_YYYY_MM_DD_HH_MM_SS() (timeStr string) {
 	return timeStr
 }
 
+// 将字符串进行md5编码，然后返回一个32位长度的字符串
+func str2md5(str string) (hexStr string) {
+	byteArrar := []byte(str)
+	sum := md5.Sum(byteArrar)
+	hexStr = fmt.Sprintf("%x", sum) //将[]byte转成16进制
+	return hexStr
+}
+
+// 保存url信息
 func saveUrl(urlList *list.List, collection *mongo.Collection) {
 	if urlList == nil || urlList.Len() == 0 {
 		log.Println("保存的urlList为空")
 	}
 
 	for url := urlList.Front(); url != nil; url = url.Next() {
-		value := url.Value
+		urlStr := fmt.Sprint(url.Value)
+
+		// todo 插入之前，判断db中是否有该记录
+
 		urlInfo := &UrlInfo{
-			Id:         uuid.NewV4().String(),
-			Url:        fmt.Sprint(value),
+			// uuid生成的id不能确认是哪个url
+			//Id:         uuid.NewV4().String(),
+			Id:         str2md5(urlStr),
+			Url:        urlStr,
 			CreateTime: NOW_YYYY_MM_DD_HH_MM_SS(),
 		}
 
