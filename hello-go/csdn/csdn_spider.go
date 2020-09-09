@@ -5,6 +5,7 @@ import (
 	"context"
 	"crypto/md5"
 	"fmt"
+	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo" //MongoDB的Go驱动包
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"io/ioutil"
@@ -19,7 +20,6 @@ const mongoServer = "localhost"
 const mongoPort = "27017"
 const mongoDatabase = "csdn_article"
 const mongoCollection = "article_base"
-
 
 // 程序入口
 func main() {
@@ -38,8 +38,8 @@ func main() {
 }
 
 type UrlInfo struct {
-	Id string
-	Url string
+	Id         string
+	Url        string
 	CreateTime string
 }
 
@@ -49,7 +49,7 @@ type UrlInfo struct {
 // 获取url的页面
 func HttpGetHtml(url string) (result string, err error) {
 	resp, respErr := http.Get(url)
-	if (respErr != nil) {
+	if respErr != nil {
 		err = respErr
 		fmt.Println("抓取网页出现问题，url=" + url)
 		return
@@ -75,18 +75,18 @@ func filterCsdnHref(contents string) *list.List {
 
 	for _, submatch := range allSubmatch {
 		var urlWithShit = submatch[0]
-		index:= strings.Index(urlWithShit, "\"")
+		index := strings.Index(urlWithShit, "\"")
 		index++
 		urlWithShit = urlWithShit[index:]
 
-		url := urlWithShit[0 : len(urlWithShit) - 1]
+		url := urlWithShit[0 : len(urlWithShit)-1]
 		urlList.PushBack(url)
 	}
 
 	return urlList
 }
 
-func openMongoClient() (*mongo.Collection) {
+func openMongoClient() *mongo.Collection {
 
 	clientOptions := options.Client().ApplyURI("mongodb://" + mongoServer + ":" + mongoPort)
 	client, err := mongo.Connect(context.TODO(), clientOptions)
@@ -104,12 +104,12 @@ func openMongoClient() (*mongo.Collection) {
 }
 
 func NOW_YYYY_MM_DD_HH_MM_SS() (timeStr string) {
-	now  := time.Now()
+	now := time.Now()
 	//Year = now.Year()
 	//Mouth  = now.Month()
 	//Day  =  now.Day()
 	//时间格式化输出 Printf输出
-	timeStr = fmt.Sprintf("当前时间为： %d-%d-%d %d:%d:%d\n",now.Year(),now.Month(),now.Day(),now.Hour(),now.Minute(),now.Second())
+	timeStr = fmt.Sprintf("当前时间为： %d-%d-%d %d:%d:%d\n", now.Year(), now.Month(), now.Day(), now.Hour(), now.Minute(), now.Second())
 	//fmt.Sprintf 格式化输出
 	//dateString := fmt.Sprintf("当前时间为： %d-%d-%d %d:%d:%d\n",now.Year(),now.Month(),now.Day(),now.Hour(),now.Minute(),now.Second())
 	//fmt.Println(dateString)
@@ -133,17 +133,26 @@ func str2md5(str string) (hexStr string) {
 func saveUrl(urlList *list.List, collection *mongo.Collection) {
 	if urlList == nil || urlList.Len() == 0 {
 		log.Println("保存的urlList为空")
+		return
 	}
 
 	for url := urlList.Front(); url != nil; url = url.Next() {
 		urlStr := fmt.Sprint(url.Value)
+		urlInfo_Id := str2md5(urlStr)
 
-		// todo 插入之前，判断db中是否有该记录
+		// 插入之前，判断db中是否有该记录
+		filter := bson.D{{"id", urlInfo_Id}}
+		var existsArticleUrl UrlInfo
+		error := collection.FindOne(context.TODO(), filter).Decode(&existsArticleUrl)
+		if error == nil {
+			log.Println("url已经存在，url=" + urlStr)
+			return
+		}
 
 		urlInfo := &UrlInfo{
 			// uuid生成的id不能确认是哪个url
 			//Id:         uuid.NewV4().String(),
-			Id:         str2md5(urlStr),
+			Id:         urlInfo_Id,
 			Url:        urlStr,
 			CreateTime: NOW_YYYY_MM_DD_HH_MM_SS(),
 		}
