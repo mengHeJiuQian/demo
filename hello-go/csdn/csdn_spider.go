@@ -16,7 +16,7 @@ import (
 	"time"
 )
 
-const mongoServer = "localhost"
+const mongoServer = "wangye"
 const mongoPort = "27017"
 const mongoDatabase = "csdn_article"
 const mongoCollection = "article_base"
@@ -24,17 +24,36 @@ const mongoCollection = "article_base"
 // 程序入口
 func main() {
 
-	html, _ := HttpGetHtml("https://blog.csdn.net/iotisan/article/details/104463582")
-	//fmt.Println(html)
-	urlList := filterCsdnHref(html)
-
 	client := openMongoClient()
 
-	saveUrl(urlList, client)
-	// https://www.cnblogs.com/dongyuq1/p/13595258.html
-	// https://www.cnblogs.com/Dr-wei/p/11742293.html
+	beginUrl := "https://blog.csdn.net/iotisan/article/details/104463582"
 
+	for {
+		// 从mongo中随机找一个url，如果能找到url，就用从库中找到的url.
+		urlFromTable := findUrlFromArticleBase(client)
+		if urlFromTable != nil {
+			beginUrl = urlFromTable
+		}
+
+		html, _ := HttpGetHtml(beginUrl)
+		//fmt.Println(html)
+		urlList := filterCsdnHref(html)
+
+		saveUrl(urlList, client)
+		// https://www.cnblogs.com/dongyuq1/p/13595258.html
+		// https://www.cnblogs.com/Dr-wei/p/11742293.html
+	}
 	//client.close
+}
+
+// 从article_base表中最后100条记录中随机找一个url
+func findUrlFromArticleBase(collection *mongo.Collection) (urlFromTable string) {
+	var limit int64 = 1
+	collection.Find(context.TODO(), nil, &options.FindOptions{
+		Limit: &limit,
+		Sort:  Sort{_id: -1},
+	})
+	// https://blog.csdn.net/le_17_4_6/article/details/94740071
 }
 
 type UrlInfo struct {
@@ -138,10 +157,10 @@ func saveUrl(urlList *list.List, collection *mongo.Collection) {
 
 	for url := urlList.Front(); url != nil; url = url.Next() {
 		urlStr := fmt.Sprint(url.Value)
-		urlInfo_Id := str2md5(urlStr)
+		urlInfoId := str2md5(urlStr)
 
 		// 插入之前，判断db中是否有该记录
-		filter := bson.D{{"id", urlInfo_Id}}
+		filter := bson.D{{"id", urlInfoId}}
 		var existsArticleUrl UrlInfo
 		error := collection.FindOne(context.TODO(), filter).Decode(&existsArticleUrl)
 		if error == nil {
@@ -152,7 +171,7 @@ func saveUrl(urlList *list.List, collection *mongo.Collection) {
 		urlInfo := &UrlInfo{
 			// uuid生成的id不能确认是哪个url
 			//Id:         uuid.NewV4().String(),
-			Id:         urlInfo_Id,
+			Id:         urlInfoId,
 			Url:        urlStr,
 			CreateTime: NOW_YYYY_MM_DD_HH_MM_SS(),
 		}
