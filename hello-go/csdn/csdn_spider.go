@@ -16,7 +16,7 @@ import (
 	"time"
 )
 
-const mongoServer = "wangye"
+const mongoServer = "localhost"
 const mongoPort = "27017"
 const mongoDatabase = "csdn_article"
 const mongoCollection = "article_base"
@@ -26,20 +26,24 @@ func main() {
 
 	client := openMongoClient()
 
-	beginUrl := "https://blog.csdn.net/iotisan/article/details/104463582"
+	beginUrl := "https://blog.csdn.net/wei242425445/article/details/88417407"
+
+	urlList := list.New()
 
 	for {
 		// 从mongo中随机找一个url，如果能找到url，就用从库中找到的url.
-		urlFromTable := findUrlFromArticleBase(client)
-		if urlFromTable != nil {
-			beginUrl = urlFromTable
+		//urlFromTable := findUrlFromArticleBase(client)
+		if urlList != nil && urlList.Len() != 0 {
+			urlStr := fmt.Sprint(urlList.Back().Value)
+			beginUrl = urlStr
 		}
 
 		html, _ := HttpGetHtml(beginUrl)
 		//fmt.Println(html)
-		urlList := filterCsdnHref(html)
+		urlList = filterCsdnHref(html)
 
 		saveUrl(urlList, client)
+		time.Sleep(time.Duration(5) * time.Second)
 		// https://www.cnblogs.com/dongyuq1/p/13595258.html
 		// https://www.cnblogs.com/Dr-wei/p/11742293.html
 	}
@@ -51,8 +55,9 @@ func findUrlFromArticleBase(collection *mongo.Collection) (urlFromTable string) 
 	var limit int64 = 1
 	collection.Find(context.TODO(), nil, &options.FindOptions{
 		Limit: &limit,
-		Sort:  Sort{_id: -1},
+		//Sort:  ,
 	})
+	return
 	// https://blog.csdn.net/le_17_4_6/article/details/94740071
 }
 
@@ -165,7 +170,7 @@ func saveUrl(urlList *list.List, collection *mongo.Collection) {
 		error := collection.FindOne(context.TODO(), filter).Decode(&existsArticleUrl)
 		if error == nil {
 			log.Println("url已经存在，url=" + urlStr)
-			return
+			continue
 		}
 
 		urlInfo := &UrlInfo{
