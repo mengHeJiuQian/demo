@@ -30,22 +30,4 @@ public class DateFormatUtils {
     }
 
 
-
-
-
-
-DGT_01("01","身份证",WeChatConstants.SYSTEM_NAME_DGT),
-DGT_02("02","护照",WeChatConstants.SYSTEM_NAME_DGT),
-DGT_03("03","其他",WeChatConstants.SYSTEM_NAME_DGT),
-DGT_04("04","军人证",WeChatConstants.SYSTEM_NAME_DGT),
-DGT_05("05","台胞证",WeChatConstants.SYSTEM_NAME_DGT),
-DGT_06("06","港澳通行证",WeChatConstants.SYSTEM_NAME_DGT),
-DGT_07("07","户口本",WeChatConstants.SYSTEM_NAME_DGT),
-DGT_08("08","出生证",WeChatConstants.SYSTEM_NAME_DGT),
-DGT_09("09","港澳居民居住证",WeChatConstants.SYSTEM_NAME_DGT),
-DGT_10("10","台湾居民居住证",WeChatConstants.SYSTEM_NAME_DGT),
-DGT_11("11","工商营业执照",WeChatConstants.SYSTEM_NAME_DGT),
-DGT_12("12","纳税人登记证",WeChatConstants.SYSTEM_NAME_DGT);
-
-
 }
