@@ -1,39 +1,37 @@
 package json;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
-import lombok.Data;
 
-import java.io.Serializable;
 import java.util.TreeMap;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
- * 模板数据封装  -- 实体信息.
+ * 功能描述：
+ * 微信模板消息封装  -- 实体信息.
+ *
+ * @version V1.0
+ * @classname: com.metlife.wechat.modules.model.wx.TemplateData.java
+ * @copyright Powered By wechat
+ * @author: somnus
+ * @date: 2019-12-10 19:04:29
  */
 @Data
-public final class TemplateData implements Serializable {
+public final class TemplateData {
 
-    private static final long serialVersionUID = -9211325405900846359L;
-
-    /**
-     * String.
-     */
+    /** 接收者标识. */
     private String touser;
 
-    /**
-     * String.
-     */
+    /** 模板Id. */
     @JsonProperty(value = "template_id")
     private String templateId;
 
-    /**
-     * TemplateItem.
-     */
+    /** 模板对象. */
     private TemplateItem data;
 
-    /**
-     * 模板链接地址.
-     */
+    /** 点击模板消息跳转链接. */
     private String url;
 
     /**
@@ -42,22 +40,27 @@ public final class TemplateData implements Serializable {
     private MiniProgram miniprogram;
 
     /**
-     * getTemplateData.
+     * 功能描述:
+     * 获取模板数据.
      *
-     * @return
+     * @methodname: getTemplateData
+     * @params: []
+     * @returns: com.metlife.wechat.modules.model.wx.TemplateData
+     * @author: somnus
+     * @date: 2019-12-10 19:05:59
      */
     public static TemplateData getTemplateData() {
         return new TemplateData();
     }
 
-    public TemplateData() {
+    TemplateData() {
         this.data = new TemplateItem();
     }
 
     /**
      * add.
      *
-     * @param key   钥匙
+     * @param key   键
      * @param value 值
      * @param color 颜色代码
      * @return
@@ -70,13 +73,12 @@ public final class TemplateData implements Serializable {
     /**
      * TemplateItem.
      */
-    public class TemplateItem extends TreeMap<String, Item> {
-        private static final long serialVersionUID = -3728490424738325020L;
+    public static class TemplateItem extends TreeMap<String, Item> {
 
         /**
          * TemplateItem.
          */
-        public TemplateItem() {
+        private TemplateItem() {
         }
 
         /**
@@ -94,8 +96,9 @@ public final class TemplateData implements Serializable {
      * Item.
      */
     @Data
+    @NoArgsConstructor
     @AllArgsConstructor
-    private class Item {
+    private static class Item {
 
         /**
          * value.
@@ -115,7 +118,6 @@ public final class TemplateData implements Serializable {
     public static class MiniProgram {
         @JsonProperty(value = "appid")
         private String appId;
-
         @JsonProperty(value = "pagepath")
         private String pagePath;
     }

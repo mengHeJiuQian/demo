@@ -3,6 +3,14 @@ package string;
 import org.apache.commons.lang.StringUtils;
 import org.junit.jupiter.api.Test;
 
+import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 /**
  * describe:
  *
@@ -10,6 +18,57 @@ import org.junit.jupiter.api.Test;
  * @date 2019/4/14 21:01
  */
 public class StringTest {
+
+    @Test
+    public void testPrint() {
+        String[] strArr = new String[]{null, null, null};
+        String reason = StringUtils.join(strArr , ":");
+        System.out.println(reason);
+
+        List<String> list = new ArrayList<String>(){{
+            add(null);
+            add(null);
+            add(null);
+        }};
+        String reason2 = StringUtils.join(list , ":");
+        System.out.println(reason2);
+
+
+        String result = list.stream().collect(Collectors.joining(""));
+        System.out.println(result);
+
+        String join = String.join(":", list);
+        System.out.println(join);
+
+        System.out.println("night mode");
+        /* \u000d System.out.println("night mode"); */
+
+        Set<String> set = new HashSet<String>() {{
+            add("wmyskxz");
+            add("is");
+            add("awesome");
+            add("!");
+        }};
+        System.out.println(set);
+        // Arrays.asList();
+
+        int[] arr = {1,3,4,5,6, 8};
+        int pos = Arrays.binarySearch(arr, 7);
+        System.out.println("Element has to be inserted at: " + pos);
+        System.out.println("Element has to be inserted at: " + ~pos);
+
+        // 快速判断素数
+        boolean probablePrime = BigInteger.valueOf(1235).isProbablePrime(1);
+        System.out.println(probablePrime);
+
+
+    }
+
+    @Test
+    public void testSubString() {
+        System.out.println("01".substring(0, 2));
+        System.out.println("011".substring(0, 2));
+    }
 
     @Test
     public void testEquals() {
