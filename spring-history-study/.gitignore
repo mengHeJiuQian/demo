@@ -6,6 +6,7 @@ HELP.md
 # eclipse
 .settings/
 .project
+.classpath
 
 # java
 target/

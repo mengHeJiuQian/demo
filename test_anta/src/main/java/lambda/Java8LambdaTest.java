@@ -3,7 +3,6 @@ package lambda;
 import com.google.common.base.Function;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -15,7 +14,8 @@ import java.util.stream.Collectors;
  */
 public class Java8LambdaTest {
     public static void main(String[] args) {
-        testMap();
+//        testMap();
+        testFilter();
 
     }
 
