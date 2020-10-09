@@ -2,7 +2,6 @@ package regex;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
@@ -19,17 +18,19 @@ public class AddressResolutionUtil {
      * @return
      */
     public static List<String> addressResolution(String address){
-        String regex = "";
-        Matcher m = Pattern.compile(regex).matcher(address);
-        String town = null, village = null;
+        String regex = ".*?(路|乡|镇|园)";
+        // Matcher m = Pattern.compile(regex).matcher(address);
+        boolean matches = Pattern.matches(regex, address);
+        System.out.println(matches);
         List<String> table = new ArrayList<>();
         return table;
     }
 
     public static void main(String[] args) {
-        System.out.println(addressResolution("北京北京市朝阳区"));
-        System.out.println(addressResolution("湖北省武汉市洪山区"));
-        System.out.println(addressResolution("北京北京市东城区岚皋路"));
+        System.out.println(addressResolution("五宝路心愿公寓25楼"));
+        System.out.println(addressResolution("光山县白雀园"));
+        System.out.println(addressResolution("光山县白雀园镇"));
+        System.out.println(addressResolution("光山县凉亭乡"));
     }
 
 }
