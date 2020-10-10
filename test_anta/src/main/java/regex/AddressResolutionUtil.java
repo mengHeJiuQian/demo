@@ -1,7 +1,6 @@
 package regex;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
@@ -17,20 +16,33 @@ public class AddressResolutionUtil {
      * @param address
      * @return
      */
-    public static List<String> addressResolution(String address){
-        String regex = ".*?(路|乡|镇|园)";
-        // Matcher m = Pattern.compile(regex).matcher(address);
-        boolean matches = Pattern.matches(regex, address);
-        System.out.println(matches);
-        List<String> table = new ArrayList<>();
-        return table;
+    public static void addressResolution(String address){
+        String town = null, detailAddress = null;
+        if (true) {
+            // []是单字符匹配，()是多字符匹配
+            String regex = "(.*?(园镇|乡镇|路|乡|镇|园)).*";
+            Matcher matcher = Pattern.compile(regex).matcher(address);
+            boolean find = matcher.find();
+            if (find) {
+                town = matcher.group(1);
+                detailAddress = address.substring(town.length());
+            } else {
+                detailAddress = address;
+            }
+        }
+        System.out.println("address:" + address);
+        System.out.println("town:" + town);
+        System.out.println("detailAddress:" + detailAddress);
+        System.out.println("------------");
     }
 
     public static void main(String[] args) {
-        System.out.println(addressResolution("五宝路心愿公寓25楼"));
-        System.out.println(addressResolution("光山县白雀园"));
-        System.out.println(addressResolution("光山县白雀园镇"));
-        System.out.println(addressResolution("光山县凉亭乡"));
+        addressResolution("五宝路心愿公寓25楼");
+        addressResolution("白雀园");
+        addressResolution("白雀园新园公寓25楼");
+        addressResolution("白雀园镇新园公寓25楼");
+        addressResolution("凉亭乡");
+        addressResolution("心愿公寓25楼");
     }
 
 }
