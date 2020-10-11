@@ -2,7 +2,7 @@ package regex;
 
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;

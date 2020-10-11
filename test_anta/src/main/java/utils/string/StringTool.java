@@ -1,6 +1,6 @@
 package utils.string;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import utils.datetime.DateUtil;
 
 import java.util.Date;
