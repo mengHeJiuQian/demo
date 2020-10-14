@@ -37,6 +37,7 @@ public class AddressResolutionUtil {
     }
 
     public static void main(String[] args) {
+        addressResolution("江山路明发  滨江新城353栋801室（宿舍      ）                                                                                        ");
         addressResolution("五宝路心愿公寓25楼");
         addressResolution("白雀园");
         addressResolution("白雀园新园公寓25楼");
