@@ -1,0 +1,7 @@
+.idea/
+target/
+
+# 忽略logs文件和logs目录
+logs
+
+*.iml
