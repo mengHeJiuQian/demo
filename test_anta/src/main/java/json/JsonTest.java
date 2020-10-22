@@ -3,6 +3,12 @@ package json;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.google.gson.Gson;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.TemporalAccessor;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
@@ -208,6 +214,44 @@ public class JsonTest {
         List list1 = JSONObject.parseObject(json, List.class);
         Instant t4 = Instant.now();
         System.out.println(Duration.between(t3, t4).toMillis());
+    }
+
+    @Test
+    public void test() {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        TemporalAccessor parse = dtf.parse("2020-10-01");
+        //SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+        User u = new User("aaa", 1);
+        u = null;
+
+        //System.out.println(null != null);
+        //System.out.println(null == null);
+
+        System.out.println(a() && b(u) && (c(u) || d(u)));
+//        System.out.println(b(1) || b(2) && b(4) && b(6) || b(8));
+
+//        System.out.println(false || true);
+    }
+
+    public boolean a() {
+        System.out.println("a()" + true);
+        return true;
+    }
+
+    public boolean b(User u) {
+        System.out.println("b(u)" + (u != null));
+        return u != null;
+    }
+
+    public boolean c(User u) {
+        System.out.println("c(u)" + (StringUtils.isBlank(u.getNickName())));
+        return StringUtils.isBlank(u.getNickName());
+    }
+
+    public boolean d(User u) {
+        System.out.println("d(u)" + (u.getIsSubscription() == 0));
+        return u.getIsSubscription() == 0;
     }
 
 }

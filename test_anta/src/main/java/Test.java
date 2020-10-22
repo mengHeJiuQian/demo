@@ -1,28 +1,28 @@
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.UUID;
+import string.DateFormatUtils;
 
 /**
- * 将两个升序的数组进行合并为一个数组，新的数组还是升序状态
- *
+ * 常用测试代码编写在这里，写完即可删除.
  */
 public class Test {
 
     public static void main(String[] args) {
-//        ArrayList strings = new ArrayList();
-//        strings.add("北京市");
-//        strings.add("重庆市");
-//        strings.add("河南省");
-//        strings.add("天津市");
-//        strings.add("上海市");
-
-        ArrayList strings = new ArrayList();
-        for (int i = 1; i <= 100; i++) {
-            String format = String.format("%03d", i);
-            String item = format + "-" + UUID.randomUUID().toString().replace("-", "");
-            strings.add(item);
-        }
-        for (Object string : strings) {
-            System.out.println(string);
-        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd mm:HH:ss.SSS");
+        var a = 1595470508 * 1000L;
+        System.out.println(a);
+        Date date1 = new Date(a);
+        Date date2 = new Date(1595470508000L);
+        System.out.println(sdf.format(date1));
+        System.out.println(sdf.format(date2));
+        System.out.println(sdf.format(new Date()));
     }
+
 }
+// 1603173717271
+// 1382694957
+// 1595470508000
+// 2147483647
