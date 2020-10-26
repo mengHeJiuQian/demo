@@ -3,10 +3,14 @@ package chapter12_date_api;
 import org.junit.jupiter.api.Test;
 
 import java.time.*;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 import java.time.temporal.ChronoField;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalAdjuster;
 import java.time.temporal.TemporalAdjusters;
+import java.util.Locale;
+import java.util.TimeZone;
 
 public class TestLocalDate {
 
@@ -52,7 +56,21 @@ public class TestLocalDate {
         LocalDate with = date10.with(TemporalAdjusters.nextOrSame(DayOfWeek.SUNDAY));
         System.out.println(with);
 
+        //构造一个DateTimeFormatter
+        DateTimeFormatter italianFormatter = new DateTimeFormatterBuilder()
+                .appendText(ChronoField.DAY_OF_MONTH)
+                .appendLiteral(". ")
+                .appendText(ChronoField.MONTH_OF_YEAR)
+                .appendLiteral(". ")
+                .appendText(ChronoField.YEAR)
+                .parseCaseInsensitive()
+                .toFormatter(Locale.ITALIAN);
+        String format = LocalDate.now().format(italianFormatter);
+        System.out.println(format);
 
+        // 处理时区
+        ZoneId roomZone = ZoneId.of("Europe/Rome");
+        ZoneId zoneId = TimeZone.getDefault().toZoneId();
 
     }
 
