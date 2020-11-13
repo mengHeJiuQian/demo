@@ -29,7 +29,7 @@ public class ObjectUtil {
      * @param source source
      * @return
      */
-    private static String[] getNullPropertyNames (Object source) {
+    private static String[] getNullPropertyNames(Object source) {
         final BeanWrapper src = new BeanWrapperImpl(source);
         PropertyDescriptor[] pds = src.getPropertyDescriptors();
 

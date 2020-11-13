@@ -1,5 +1,4 @@
 import com.alibaba.fastjson.JSON;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Date;
@@ -9,7 +8,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 import org.apache.commons.collections.CollectionUtils;
-import org.springframework.beans.BeanUtils;
 import utils.ObjectUtil;
 
 /**
@@ -55,6 +53,11 @@ public class Test {
 
         System.out.println(JSON.toJSONString(u3));
         System.out.println(JSON.toJSONString(u4));
+
+
+        List<User> userList = null;
+        userList = new ArrayList<>();
+        System.out.println(JSON.toJSONString(userList));
     }
 
 }
