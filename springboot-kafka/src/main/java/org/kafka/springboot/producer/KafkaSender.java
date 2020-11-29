@@ -40,7 +40,8 @@ public class KafkaSender {
     }
 
     public void splitNameTask(NameTaskDto taskDto) {
-        ProducerRecord<String, String> record = new ProducerRecord<>(KafkaConfig.GROUP_ID_SPLIT_PRINT_NAME_TASK, JsonUtil.toJson(taskDto));
+        ProducerRecord<String, String> record = new ProducerRecord<>(KafkaConfig.GROUP_ID_SPLIT_PRINT_NAME_TASK,
+                JsonUtil.toJson(taskDto));
         kafkaTemplate.send(record);
     }
 }

@@ -1,4 +1,5 @@
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Date;
@@ -18,6 +19,23 @@ public class Test {
     // [{"address":"123","name":"yang.liu"},{"address":"123","name":"yang.liu"}]
 
     public static void main(String[] args) {
+
+        System.out.println("=" + testTrim("                         ") + "=");
+        // System.out.println("=" + testTrim(null) + "=");
+        System.out.println("=" + testTrim("010000208528             ") + "=");
+
+        System.out.println("sdfs");
+        User u = new User();
+        System.out.println(Boolean.FALSE.equals(u.getUpload()));
+        u.setUpload(false);
+        System.out.println(Boolean.FALSE.equals(u.getUpload()));
+        u.setUpload(true);
+        System.out.println(Boolean.FALSE.equals(u.getUpload()));
+        System.out.println(JSON.toJSONString(u));
+        User user = JSONObject.parseObject("{\"upload\":false}", User.class);
+        System.out.println(JSON.toJSONString(user));
+
+
         List<User> oldList = new ArrayList<>();
         User u1 = User.init();
         u1.setName("");
@@ -60,6 +78,10 @@ public class Test {
         System.out.println(JSON.toJSONString(userList));
     }
 
+    public static String testTrim(String oldPolicyNo) {
+        return oldPolicyNo.trim();
+    }
+
 }
 
 
@@ -68,6 +90,7 @@ public class Test {
 @NoArgsConstructor
 @Accessors(chain = true)
 class User {
+    private Boolean upload;
 
     /**
      * 主键.

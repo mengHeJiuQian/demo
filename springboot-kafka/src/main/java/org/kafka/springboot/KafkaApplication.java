@@ -1,12 +1,9 @@
 package org.kafka.springboot;
 
-import org.kafka.springboot.producer.KafkaSender;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.kafka.KafkaAutoConfiguration;
-import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.kafka.annotation.EnableKafka;
 
 /**
  * describe:
@@ -18,7 +15,6 @@ import org.springframework.kafka.annotation.EnableKafka;
  * @author 梦合九千
  * @date 2019/5/17 14:21
  */
-@EnableAutoConfiguration(exclude = {KafkaAutoConfiguration.class})
 @SpringBootApplication
 public class KafkaApplication {
 
