@@ -23,7 +23,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <swagger2.version>2.9.2</swagger2.version>
-        <zk.version>3.4.12</zk.version>
+        <zk.version>3.4.14</zk.version>
     </properties>
 
     <dependencies>
