@@ -26,7 +26,7 @@ import java.util.Map;
 @EnableKafka
 public class KafkaConfig {
 
-    public static final String KAFKA_ADDRESS = "aliyun:9092";
+    public static final String KAFKA_ADDRESS = "192.168.23.128:9092";
     // 拆分生产消息的任务
     public static final String GROUP_ID_SPLIT_PRINT_NAME_TASK = "split-print-name-task";
     // 批量生产消息的任务

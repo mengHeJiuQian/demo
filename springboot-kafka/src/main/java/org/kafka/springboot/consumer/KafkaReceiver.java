@@ -42,6 +42,17 @@ public class KafkaReceiver {
         }
     }
 
+    @KafkaListener(topics = {"zhisheng"}, containerFactory = "kafkaListenerContainerFactory")
+    public void listen1(ConsumerRecord record, Acknowledgment acknowledgment) {
+        Optional kafkaMessage = Optional.ofNullable(record);
+        if (kafkaMessage.isPresent()) {
+            Object message = kafkaMessage.get();
+
+            log.info("----------------- record =" + record);
+            log.info("------------------ message =" + message);
+        }
+    }
+
     /**
      * 分解任务为一批一批的
      */
